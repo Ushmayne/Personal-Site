@@ -1,4 +1,4 @@
-import Sidebar  from "./components/sidebar";
+import Sidebar from "./components/sidebar";
 import "./globals.css";
 
 export const metadata = {
@@ -9,8 +9,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="flex">
-                <Sidebar />
-                <main className="ml-[16rem] p-6 flex-1">
+        <Sidebar />
+        <main className="ml-[16rem] p-6 flex-1">
           {children}
         </main>
       </body>
