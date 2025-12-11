@@ -1,8 +1,7 @@
 export default function Resume() {
   return (
-    <main style={{ padding: "2rem" }}>
-      <h1>About Us</h1>
-      <p>This is the about page.</p>
+    <main className="min-h-screen flex items-center justify-center bg-royal">
+      <h1 className="text-4xl font-bold text-white">Resume</h1>
     </main>
   );
 }
