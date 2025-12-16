@@ -9,7 +9,7 @@ import Image from "next/image";
 
 export default function Sidebar() {
   return (
-    <nav className="sidebar fixed left-0 top-0 h-screen w-[16rem] bg-[#121212] shadow-lg flex flex-col z-50 px-4 py-6" >
+    <nav className="sidebar fixed left-0 top-0 h-screen w-[16rem] bg-[#121212] shadow-lg flex flex-col z-50 px-4 py-6">
 
       <div className="flex justify-center mb-6">
         <Image
@@ -28,45 +28,53 @@ export default function Sidebar() {
         <span className="text-blue-100 block text-lg">// Software Dev</span>
       </div>
 
-      <ul className="space-y-8 list-none mt-40 w-full px-2">
+      <ul className="space-y-20 list-none mt-40 w-full px-2">
 
         <li>
           <a
             href="/"
-            className="flex items-center w-full space-x-4 pl-2 py-2 rounded-md text-gray-300 visited:text-gray-300 no-underline focus:outline-none"
+            className="flex items-center w-full pl-2 py-2 rounded-md text-gray-300 visited:text-gray-300 no-underline focus:outline-none"
           >
-            <HomeIcon className="w-6 h-6 flex-shrink-0" width={24} height={24} />
-            <span className="text-2xl font-semibold">Home</span>
+            <div className="w-[40px] flex justify-center">
+              <HomeIcon className="w-6 h-6 flex-shrink-0" width={24} height={60} />
+            </div>
+            <span className="text-2xl font-semibold italic mt-[5px]">Home</span>
           </a>
         </li>
 
         <li>
           <a
             href="/resume"
-            className="flex items-center w-full justify-start space-x-4 text-left text-gray-200 no-underline pl-2 py-2 rounded-md bg-transparent focus:outline-none"
+            className="flex items-center w-full pl-2 py-2 rounded-md text-gray-200 no-underline focus:outline-none"
           >
-            <DocumentTextIcon className="w-6 h-6 flex-shrink-0" width={24} height={24} />
-            <span className="text-2xl font-semibold">Resume</span>
+            <div className="w-[40px] flex justify-center">
+              <DocumentTextIcon className="w-6 h-6 flex-shrink-0" width={24} height={60} />
+            </div>
+            <span className="text-2xl font-semibold italic mt-[5px]">Resume</span>
           </a>
         </li>
 
         <li>
           <a
             href="/projects"
-            className="flex items-center w-full justify-start space-x-4 text-left text-gray-200 no-underline pl-2 py-2 rounded-md bg-transparent focus:outline-none"
+            className="flex items-center w-full pl-2 py-2 rounded-md text-gray-200 no-underline focus:outline-none"
           >
-            <FolderIcon className="w-6 h-6 flex-shrink-0" width={24} height={24} />
-            <span className="text-2xl font-semibold">Projects</span>
+            <div className="w-[40px] flex justify-center">
+              <FolderIcon className="w-6 h-6 flex-shrink-0" width={24} height={60} />
+            </div>
+            <span className="text-2xl font-semibold italic mt-[5px]">Projects</span>
           </a>
         </li>
 
         <li>
           <a
             href="/hobbies"
-            className="flex items-center w-full justify-start space-x-4 text-left text-gray-200 no-underline pl-2 py-2 rounded-md bg-transparent focus:outline-none"
+            className="flex items-center w-full pl-2 py-2 rounded-md text-gray-200 no-underline focus:outline-none"
           >
-            <PuzzlePieceIcon className="w-6 h-6 flex-shrink-0" width={24} height={24} />
-            <span className="text-2xl font-semibold">Hobbies</span>
+            <div className="w-[40px] flex justify-center">
+              <PuzzlePieceIcon className="w-6 h-6 flex-shrink-0" width={24} height={60} />
+            </div>
+            <span className="text-2xl font-semibold italic mt-[5px]">Hobbies</span>
           </a>
         </li>
 

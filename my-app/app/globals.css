@@ -28,8 +28,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-nav.sidebar {
-  color: rgb(229 231 235);
+nav.sidebar {/* Title color */
+  color: rgb(235, 229, 233);
 }
 
 .sidebar a,
@@ -42,4 +42,17 @@ nav.sidebar {
 .sidebar a:hover {
   color: #000080 !important;
   background: none !important;
+}
+
+@layer components {
+  .nav-key {
+    @apply flex items-center w-full
+           pl-2 py-4
+           rounded-xl
+           bg-[#1a1a1a]
+           border border-[#2a2a2a]
+           shadow-[0_6px_0_#0a0a0a]
+           text-gray-200
+           no-underline;
+  }
 }
