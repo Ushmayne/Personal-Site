@@ -9,7 +9,8 @@ import Image from "next/image";
 
 export default function Sidebar() {
   return (
-    <nav className="sidebar fixed left-0 top-0 h-screen w-[16rem] bg-[#121212] shadow-lg flex flex-col z-50 px-4 py-6">
+    <nav className="sidebar fixed left-0 top-0 h-screen w-[16rem] bg-[#121212] shadow-lg flex flex-col z-50 py-6 overflow-hidden">
+
 
       <div className="flex justify-center mb-6">
         <Image
@@ -28,12 +29,12 @@ export default function Sidebar() {
         <span className="text-blue-100 block text-lg">// Software Dev</span>
       </div>
 
-      <ul className="space-y-20 list-none mt-40 w-full px-2">
+      <ul className="space-y-20 list-none mt-40 w-full">
 
         <li>
           <a
             href="/"
-            className="flex items-center w-full pl-2 py-2 rounded-md text-gray-300 visited:text-gray-300 no-underline focus:outline-none"
+            className="nav-key"
           >
             <div className="w-[40px] flex justify-center">
               <HomeIcon className="w-6 h-6 flex-shrink-0" width={24} height={60} />
@@ -45,7 +46,7 @@ export default function Sidebar() {
         <li>
           <a
             href="/resume"
-            className="flex items-center w-full pl-2 py-2 rounded-md text-gray-200 no-underline focus:outline-none"
+            className="nav-key"
           >
             <div className="w-[40px] flex justify-center">
               <DocumentTextIcon className="w-6 h-6 flex-shrink-0" width={24} height={60} />
@@ -57,7 +58,7 @@ export default function Sidebar() {
         <li>
           <a
             href="/projects"
-            className="flex items-center w-full pl-2 py-2 rounded-md text-gray-200 no-underline focus:outline-none"
+            className="nav-key"
           >
             <div className="w-[40px] flex justify-center">
               <FolderIcon className="w-6 h-6 flex-shrink-0" width={24} height={60} />
@@ -69,7 +70,7 @@ export default function Sidebar() {
         <li>
           <a
             href="/hobbies"
-            className="flex items-center w-full pl-2 py-2 rounded-md text-gray-200 no-underline focus:outline-none"
+            className="nav-key"
           >
             <div className="w-[40px] flex justify-center">
               <PuzzlePieceIcon className="w-6 h-6 flex-shrink-0" width={24} height={60} />
