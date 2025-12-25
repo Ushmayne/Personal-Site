@@ -29,17 +29,17 @@ export default function Sidebar() {
         <span className="text-blue-100 block text-lg">// Software Dev</span>
       </div>
 
-      <ul className="space-y-20 list-none mt-40 w-full">
+      <ul className="space-y-0 list-none mt-4 w-full">
 
         <li>
           <a
             href="/"
             className="nav-key"
           >
-            <div className="w-[40px] flex justify-center">
+            <div className="w-8 flex justify-center">
               <HomeIcon className="w-6 h-6 flex-shrink-0" width={24} height={60} />
             </div>
-            <span className="text-2xl font-semibold italic mt-[5px]">Home</span>
+            <span className="text-lg font-semibold italic mt-[5px]">Home</span>
           </a>
         </li>
 
@@ -48,10 +48,10 @@ export default function Sidebar() {
             href="/resume"
             className="nav-key"
           >
-            <div className="w-[40px] flex justify-center">
+            <div className="w-8 flex justify-center">
               <DocumentTextIcon className="w-6 h-6 flex-shrink-0" width={24} height={60} />
             </div>
-            <span className="text-2xl font-semibold italic mt-[5px]">Resume</span>
+            <span className="text-lg font-semibold italic mt-[5px]">Resume</span>
           </a>
         </li>
 
@@ -60,10 +60,10 @@ export default function Sidebar() {
             href="/projects"
             className="nav-key"
           >
-            <div className="w-[40px] flex justify-center">
+            <div className="w-8 flex justify-center">
               <FolderIcon className="w-6 h-6 flex-shrink-0" width={24} height={60} />
             </div>
-            <span className="text-2xl font-semibold italic mt-[5px]">Projects</span>
+            <span className="text-lg font-semibold italic mt-[5px]">Projects</span>
           </a>
         </li>
 
@@ -72,10 +72,10 @@ export default function Sidebar() {
             href="/hobbies"
             className="nav-key"
           >
-            <div className="w-[40px] flex justify-center">
+            <div className="w-8 flex justify-center">
               <PuzzlePieceIcon className="w-6 h-6 flex-shrink-0" width={24} height={60} />
             </div>
-            <span className="text-2xl font-semibold italic mt-[5px]">Hobbies</span>
+            <span className="text-lg font-semibold italic mt-[5px]">Hobbies</span>
           </a>
         </li>
 

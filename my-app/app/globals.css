@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --background: #020617;
@@ -16,7 +17,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #000080;
+    --background: #0f172a;
     --foreground: #ffffff;
   }
 }
@@ -28,21 +29,21 @@ body {
 }
 
 
-nav.sidebar {/* Title color */
+nav.sidebar {
   background: linear-gradient(to bottom, #020617, #030712);
   animation: titleColorCycle 4s infinite linear;
 }
 
 @keyframes titleColorCycle {
   0%   { color: #ffffff; }
-  40%  { color: #60a5fa; }
-  60%  { color: #60a5fa; }
+  40%  { color: #c9a66b; }
+  60%  { color: #c9a66b; }
   100% { color: #ffffff; }
 }
 
 .sidebar a,
 .sidebar a:visited {
-  color: #ffffff;
+  color: #5b7c99;
   text-decoration: none !important;
 }
 
@@ -55,21 +56,19 @@ nav.sidebar {/* Title color */
 .nav-key{
   animation: titleColorCycle 4s infinite linear;
   display: flex;
-  width: calc(100% + 40px);
   box-sizing: border-box;
   align-items: center;
-
+  width: calc(100% + 10px);
   padding: 18px 14px;
   border-radius: 14px;
 
   background: #1a1a1a;
-  border: 1px solid #60a5fa;
+  border: 1px solid #5b7c99;
   color: #fff;
   text-decoration: none;
   box-shadow:
-    inset 0 -6px 0 #60a5fa,
+    inset 0 -6px 0 #5b7c99,
     inset 0 1px 0 #2a2a2a;
-  margin-left: -40px;  
 }
 
 .page-content {
@@ -84,5 +83,14 @@ colors:
 green: 228B22
 red:7f1d1d
 blue: 000080
+Warm glow (buttons / emphasis):    #c9a66b
+Soft amber (hover / underline):    #e3c98f
+Moss green (links / highlights):   #4b7f52
+Pine green (hover states):         #365f3b
+Rain blue (icons / borders):       #5b7c99
+Background (night sky / rain):     #0f172a   (slate-900)
+Secondary background (panels):     #020617   (near-black blue)
+Text primary (fog):                #e5e7eb   (soft gray)
+Text muted:                        #9ca3af   (mist gray)
 */
 
