@@ -10,6 +10,7 @@
   --color-cabin-rain: #5b7c99;
   --color-cabin-glow: #c9a66b;
   --color-cabin-red: #ef4444;
+  --font-sans: var(--font-ibm-plex-sans), system-ui, sans-serif;
 }
 
 :root {

@@ -26,7 +26,7 @@ export default function Home() {
       
       {/* TEXT */}
       <div className="max-w-3xl space-y-4 flex-1">
-        <h1 className="text-4xl font-bold text-cabin-glow">
+        <h1 className="text-4xl font-courier font-bold text-cabin-glow">
           {displayedText}
           <span className="animate-pulse"></span>
         </h1>
