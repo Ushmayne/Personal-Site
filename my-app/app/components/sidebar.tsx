@@ -9,7 +9,7 @@ import Image from "next/image";
 
 export default function Sidebar() {
   return (
-    <nav className="sidebar fixed left-0 top-0 h-screen w-[16rem] bg-[#121212] shadow-lg flex flex-col z-50 py-6 overflow-hidden">
+    <nav className="sidebar fixed left-0 top-0 h-screen w-[16rem] bg-[#121212] shadow-lg flex flex-col z-50 py-6 overflow-hidden border-r border-gray-600">
 
 
       <div className="flex justify-center mb-6">

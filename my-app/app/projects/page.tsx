@@ -3,55 +3,55 @@ export default function Projects() {
     {
       title: "A-Path-Finding-Visualizer",
       description: "A simple visualizer for the A* pathfinding algorithm written in python using pygame.",
-      image: "/project-placeholder.jpg",
+      image: "/astarPath.jpg",
       github: "https://github.com/Ushmayne/A-star-Path-Finding-Visualizer-",
     },
     {
       title: "Cozy Bot",
       description: "Discord bot built with Node.js. It plays music, chats using OpenAI's ChatGPT API, and rewards users with points when interacting. Perfect for chill hangouts, late-night convos, and lo-fi background vibes.",
-      image: "/project-placeholder.jpg",
+      image: "/BotPhoto.jpg",
       github: "https://github.com/Ushmayne/discordBot",
     },
     {
       title: "Weather App",
       description: "This is a simple Weather App built in C# that retrieves real-time weather data using an external API.",
-      image: "/project-placeholder.jpg",
+      image: "/weatherApp.jpg",
       github: "https://github.com/Ushmayne/Weather-App",
     },
     {
       title: "File Compressor",
       description: "The File Compression System is a Windows application designed to help users easily compress and decompress files.",
-      image: "/project-placeholder.jpg",
+      image: "/file_compressor.jpg",
       github: "https://github.com/Ushmayne/File-Compression-Utility",
     },
     {
       title: "Original Portfolio Website",
       description: "My first attempt at building a personal portfolio website to showcase my projects and skills.",
+      image: "/ogPort.jpg",
+      github: "https://github.com/Ushmayne/portfolio-website",
+    },
+    {
+      title: "Poker Game",
+      description: "A poker game built in Java in which the AI can hold or fold, there is also a chance it can bluff.",
       image: "/project-placeholder.jpg",
       github: "https://github.com/Ushmayne/portfolio-website",
     },
     {
-      title: "p6",
-      description: "My first attempt at building a personal portfolio website to showcase my projects and skills.",
+      title: "Clock Made with OpenGL",
+      description: "A simple clock built in OpenGL that displays current system time and updates with each passing second.",
       image: "/project-placeholder.jpg",
       github: "https://github.com/Ushmayne/portfolio-website",
     },
     {
-      title: "p7",
-      description: "My first attempt at building a personal portfolio website to showcase my projects and skills.",
-      image: "/project-placeholder.jpg",
-      github: "https://github.com/Ushmayne/portfolio-website",
-    },
-    {
-      title: "p8",
-      description: "My first attempt at building a personal portfolio website to showcase my projects and skills.",
+      title: "Autonomous Vehicle Simulation in Unity",
+      description: "The emphasis of this project is on the localization is the ability of the vehicle to pinpoint its location with the map.",
       image: "/project-placeholder.jpg",
       github: "https://github.com/Ushmayne/portfolio-website",
     },
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="ml-6 px-12 py-10 min-h-screen">
       <div className="mb-12">
         <h1 className="text-5xl font-bold text-cabin-glow mb-2">Projects</h1>
         <p className="text-cabin-muted text-lg">Here are some of my recent projects, you can check the rest of my projects on GitHub! </p>
@@ -66,9 +66,9 @@ export default function Projects() {
             rel="noopener noreferrer"
             className="group"
           >
-            <div className="relative bg-cabin-panel rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer h-full flex flex-col border border-cabin-pine hover:border-cabin-moss">
+            <div className="relative bg-cabin-panel rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer h-full flex flex-col border border-cabin-rain hover:border-cabin-muted">
               {/* Image Container */}
-              <div className="relative w-full h-48 overflow-hidden bg-gradient-to-br from-cabin-pine to-cabin-panel">
+              <div className="relative w-full h-48 overflow-hidden bg-gradient-to-br from-cabin-rain to-cabin-panel">
                 <img
                   src={project.image}
                   alt={project.title}

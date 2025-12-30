@@ -41,7 +41,7 @@ export default function Home() {
         <img
           src="/usman.jpg"
           alt="Usman"
-          className="w-[400px] rounded-lg bg-cabin-pine p-2 shadow-2xl"
+          className="w-[400px] rounded-lg bg-cabin-rain p-2 shadow-2xl"
         />
         <h1 className="mt-4 text-center text-lg font-semibold text-grey-400">Just a fun picture of me</h1>
         
@@ -104,7 +104,7 @@ export default function Home() {
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
             </svg>
-            <span>Window, Ontario</span>
+            <span>Windsor, Ontario</span>
           </div>
         </div>
       </div>
