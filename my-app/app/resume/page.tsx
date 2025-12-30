@@ -34,9 +34,13 @@ const jobs: Job[] = [
     company: 'Stellantis',
     duration: 'Jan 2025 - Present',
     description: [
-      'Developed and maintained web applications using React and TypeScript',
-      'Collaborated with cross-functional teams to implement new features',
-      'Improved application performance by optimizing database queries',
+      '> Supervised production operations and maintenance within the Body Shop, ensuring equipment reliability and process optimization to meet production targets.',
+      '> Utilized data-driven decision-making to monitor equipment performance, troubleshoot system failures, and implement preventive maintenance strategies to minimize downtime.',
+      '> Led cross-functional teams in diagnosing and resolving automation and robotics issues, working closely with engineers to maintain seamless production flow.',
+      '> Implemented process improvements by analyzing production data and identifying bottlenecks, enhancing efficiency through structured problem-solving.',
+      '> Managed workflow scheduling, ensuring optimal resource allocation while maintaining compliance with quality and safety standards.',
+      '> Developed and maintained technical documentation, standard operating procedures (SOPs), and reports, improving communication and knowledge sharing.',
+      '> Collaborated with cross-functional teams to introduce new technologies and automation solutions, driving continuous improvement initiatives.',
     ],
   },
   {
@@ -44,10 +48,12 @@ const jobs: Job[] = [
     company: 'Lakeview Montessori School',
     duration: 'Oct 2023 - December 2024',
     description: [
-      'Developed and maintained web applications using React and TypeScript',
-      'Collaborated with cross-functional teams to implement new features',
-      'Improved application performance by optimizing database queries',
-    ],
+      '> Curriculum Development: Design and implement comprehensive technology education programs that align with state and national standards. Create lesson plans that cover fundamental and advanced technological concepts, including coding, robotics, digital literacy, and software applications.',
+      '> Deliver engaging and interactive lessons using a variety of instructional methods. Incorporate hands-on projects, group activities, and real-world applications to facilitate deep understanding and practical skills.',
+      '> Develop and administer assessments to evaluate student progress and understanding. Provide constructive feedback and adapt teaching strategies to meet the diverse needs of students.',
+      '> Maintain a positive and inclusive classroom environment. Implement classroom management techniques to ensure a safe and productive learning space.',
+      '> Work collaboratively with colleagues, administrators, and parents to support student success.Communicate effectively with all stakeholders regarding student progress, program goals, and technological initiatives.',
+      '> Guided a LEGO robotics team through local competitions, developing technical and collaborative skills and earning qualification for regional-level competition.',    ],
   },
   {
     title: 'CEO',
@@ -70,9 +76,15 @@ const jobs: Job[] = [
     company: 'Canadian Tire Corporation',
     duration: 'May 2019 - December 2019',
     description: [
-      'Developed and maintained web applications using React and TypeScript',
-      'Collaborated with cross-functional teams to implement new features',
-      'Improved application performance by optimizing database queries',
+      '> Developed real-time dashboards and internal tooling used by senior leadership to monitor system performance during high-traffic promotional events.',
+      '> Collaborated with executive stakeholders to gather requirements and implement production dashboards for Cyber Week, enabling live trend tracking and rapid operational updates.',
+      '> Designed and implemented scalable dashboard interfaces using New Relic, prioritizing usability, performance, and reliability.',
+      '> Worked closely with the New Relic engineering team during the development of New Relic 2, contributing to feature validation and interface refinement.',
+      '> Tested pre-release software builds, identifying defects and providing structured feedback to improve stability and usability prior to production release.',
+      '> Participated in debugging and validation of pre-production software, helping ensure readiness for deployment in live environments.',
+      '> Built a proof-of-concept automation workflow for ticket generation to support cost-reduction analysis and operational efficiency.',
+      '> Improved internal onboarding systems and documentation, reducing ramp-up time for new developers and increasing team productivity.',
+      '> Worked in an Agile development environment, performing code reviews to ensure adherence to engineering standards and best practices.',
     ],
   },
   {
@@ -125,7 +137,7 @@ const education: Education[] = [
     school: 'University of Windsor',
     duration: 'Graduated with',
     details: [
-      'Specialized in Game Development',
+      'Specialization in Game Development',
     ],
   },
   // Add more education here
@@ -234,11 +246,11 @@ export default function Resume() {
           {education.map((edu, index) => (
             <CollapsibleSection key={index} title={`${edu.degree} - ${edu.school}`}>
               <div className="space-y-3">
-                <div className="text-sm text-gray-600 font-semibold">{edu.duration}</div>
+                <div className="text-sm text-cabin-panel font-semibold">{edu.duration}</div>
                 {edu.details && edu.details.length > 0 && (
                   <ul className="space-y-2">
                     {edu.details.map((detail, idx) => (
-                      <li key={idx} className="text-gray-700 flex items-start">
+                      <li key={idx} className="text-cabin-panel flex items-start">
                         <span className="w-2 h-2 bg-royal rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
                         <span>{detail}</span>
                       </li>
@@ -256,10 +268,10 @@ export default function Resume() {
           {jobs.map((job, index) => (
             <CollapsibleSection key={index} title={`${job.title} at ${job.company}`}>
               <div className="space-y-3">
-                <div className="text-sm text-gray-600 font-semibold">{job.duration}</div>
+                <div className="text-sm text-cabin-panel font-semibold">{job.duration}</div>
                 <ul className="space-y-2">
                   {job.description.map((desc, idx) => (
-                    <li key={idx} className="text-gray-700 flex items-start">
+                    <li key={idx} className="text-cabin-panel flex items-start">
                       <span className="w-2 h-2 bg-royal rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
                       <span>{desc}</span>
                     </li>
@@ -279,7 +291,7 @@ export default function Resume() {
               <div className="space-y-3">
                 <ul className="space-y-2">
                   {vol.description.map((desc, idx) => (
-                    <li key={idx} className="text-gray-700 flex items-start">
+                    <li key={idx} className="text-cabin-panel flex items-start">
                       <span className="w-2 h-2 bg-royal rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
                       <span>{desc}</span>
                     </li>
