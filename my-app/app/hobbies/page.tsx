@@ -1,7 +1,15 @@
-export default function Hobbies() {
-  return (
-    <main className="ml-6 px-12 py-10 min-h-screen flex items-center justify-center bg-royal">
-      <h1 className="text-4xl font-bold text-white">Hobbies</h1>
-    </main>
-  );
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
+export default function HobbiesPage() {
+  const router = useRouter();
+
+  useEffect(() => {
+    // Redirect to the first hobby (Gaming)
+    router.push('/hobbies/gaming');
+  }, [router]);
+
+  return null;
 }
