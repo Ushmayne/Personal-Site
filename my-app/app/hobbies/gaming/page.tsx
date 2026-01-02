@@ -54,16 +54,16 @@ export default function GamingPage() {
           <p className="text-cabin-text text-lg mb-6">These are the games that I have had the most fun playing over time</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
-              { rank: 1, title: 'The Last of Us', description: '2017', time: '18' },
+              { rank: 1, title: 'The Last of Us', description: 'Compelling storytelling that draws players in from the beginning, paired with relatable and complex characters who evolve throughout the game. It balances tension with thoughtful, light-hearted moments, all set within a meticulously crafted and immersive world.', time: '36' },
               { rank: 2, title: 'The Witcher 3: Wild Hunt', description: 'It has great story telling, amazing characters, detailed open worlds, meaningful choices and DLCs that are complete games on their own.', time: '95' },
-              { rank: 3, title: 'Call Of Duty: Black Ops II', description: '2012', time: 'unknown' },
-              { rank: 4, title: 'Destiny', description: '2017', time: '547' },
-              { rank: 5, title: 'The Uncharted Series', description: '2020', time: '80' },
-              { rank: 6, title: 'League of Legends', description: '2016', time: '4654' },
-              { rank: 7, title: 'Dishonored', description: '2018',time: '36' },
-              { rank: 8, title: 'Tom Clancy\'s Rainbow 6 Siege', description: '2016',time: '406'  },
-              { rank: 9, title: 'Overwatch', description: '1994',time: '332' },
-              { rank: 10, title: 'Apex Legends', description: '2016', time: '582' },
+              { rank: 3, title: 'Call Of Duty: Black Ops II', description: 'BO2 favorite entry in the series for its fast-paced, skill-driven multiplayer and its highly replayable Zombies mode, featuring well-designed maps, engaging Easter eggs, and a strong narrative.', time: 'unknown' },
+              { rank: 4, title: 'Destiny', description: 'Destiny stands out for its rewarding gear progression, beautifully crafted world, and compelling lore. With both engaging PvE experiences and competitive PvP modes, it offers something for every type of player.', time: '547' },
+              { rank: 5, title: 'The Uncharted Series', description: 'Uncharted was one of the first story-driven game series I played, featuring a charismatic protagonist and compelling supporting characters. Its cinematic storytelling and engaging puzzles create memorable adventures that challenge both the player’s mind and sense of exploration.', time: '80' },
+              { rank: 6, title: 'League of Legends', description: 'League of Legends has been a way for me to connect with friends for over eight years, with each match offering unique strategies and emotional moments. Its annual preseason updates keep the game fresh, and as a Zed one-trick with over 875,000 mastery, I value mastery, mechanics, and continuous improvement.', time: '4654' },
+              { rank: 7, title: 'Dishonored', description: 'Dishonored is celebrated for its creative mechanics and the freedom to approach each mission in multiple ways. Its DLC offers a unique perspective by letting players experience the story as the antagonist, adding depth and variety to the game.',time: '36' },
+              { rank: 8, title: 'Tom Clancy\'s Rainbow 6 Siege', description: 'Tom Clancy’s Rainbow Six Siege stands out as a high-stakes competitive shooter that emphasizes teamwork and strategy. Coordinating with friends to plan site setups and execute round strategies, combined with well-balanced and uniquely designed maps, creates a consistently engaging and tactical experience.',time: '406'  },
+              { rank: 9, title: 'Overwatch', description: 'Overwatch stands out for its diverse and well-designed heroes, allowing players with different playstyles to enjoy the game. Its polished maps, distinctive art style, and high-quality cinematics combine to deliver strong visual storytelling and a memorable world.',time: '332' },
+              { rank: 10, title: 'Apex Legends', description: 'Apex Legends is a fast-paced battle royale game known for its unique characters, each with their own abilities, and its emphasis on team play and strategy. Its dynamic gameplay and regular updates keep the experience fresh and engaging.', time: '582' },
             ].map((game) => (
               <div
                 key={game.rank}
@@ -84,12 +84,7 @@ export default function GamingPage() {
           </div>
         </div>
 
-        {/* Add image placeholder */}
-        <div className="mt-8">
-          <div className="w-full h-64 bg-gray-800 rounded-lg flex items-center justify-center border border-gray-700">
-            <p className="text-cabin-muted">Add your gaming image here</p>
-          </div>
-        </div>
+        
       </div>
     </div>
   );
