@@ -22,7 +22,7 @@ export default function GamingPage() {
       <div className="mb-12">
         <div className="flex items-start gap-8 mb-8">
           <div className="flex-1">
-            <h2 className="text-4xl font-bold text-cabin-text mb-4">
+            <h2 className="text-4xl font-bold text-cabin-glow mb-4">
               Gaming
             </h2>
             <p className="text-cabin-text text-lg leading-relaxed">
@@ -51,7 +51,7 @@ export default function GamingPage() {
         {/* Top 10 Games Section */}
         <div className="mt-12">
           <h3 className="text-3xl font-bold text-cabin-text mb-2">My Top 10 Games of All Time</h3>
-          <p className="text-cabin-text text-lg mb-6">These are the games that I have had the most fun playing over time</p>
+          <p className="text-cabin-muted text-lg mb-6">These are the games that I have had the most fun playing over time</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
               { rank: 1, title: 'The Last of Us', description: 'Compelling storytelling that draws players in from the beginning, paired with relatable and complex characters who evolve throughout the game. It balances tension with thoughtful, light-hearted moments, all set within a meticulously crafted and immersive world.', time: '36' },
