@@ -21,30 +21,23 @@ export default function LegoPage() {
       <div className="mb-12">
         <div className="flex items-start gap-8 mb-8">
           <div className="flex-1">
-            <h2 className="text-4xl font-bold text-cabin-text mb-4">
+            <h2 className="text-4xl font-bold text-cabin-glow mb-4">
               Lego
             </h2>
-            <p className="text-cabin-muted text-lg leading-relaxed">
-              Building with Lego is both relaxing and creative. I enjoy the problem-solving aspect and the satisfaction of creating something tangible from instructions.
+            <p className="text-cabin-text text-lg leading-relaxed">
+              I began building LEGO sets as an adult, with my earliest hands-on experience coming from assembling household furniture. What started as a practical skill quickly became a rewarding hobby that helps me relax and focus, providing a calm, structured way to step away from everyday distractions.
             </p>
           </div>
         </div>
 
         {/* Detailed Content */}
-        <div className="space-y-6 text-cabin-muted text-lg leading-relaxed">
+        <div className="space-y-6 text-cabin-text text-lg leading-relaxed">
           <p>
-            There's something meditative about building with Lego. Following complex instructions requires focus and attention to detail, while the tactile experience of connecting pieces is incredibly satisfying. I enjoy everything from building intricate sets to using Lego for creative projects.
+            I enjoy the problem-solving aspect of each build and the satisfaction of creating a tangible final result. LEGO building combines technical precision with creative expression—much like software development—where patience, attention to detail, and logical sequencing are essential. Each project feels like a journey, with the completed build serving as a reflection of careful planning and persistence.
           </p>
           <p>
-            It's a hobby that combines technical precision with creative expression—much like coding in many ways. Each build is a journey, and the finished product is a testament to patience and attention to detail.
+            One of my favorite sets is the Batmobile: Batman vs. The Joker, inspired by my appreciation for Batman as a character.
           </p>
-        </div>
-
-        {/* Add image placeholder */}
-        <div className="mt-8">
-          <div className="w-full h-64 bg-gray-800 rounded-lg flex items-center justify-center border border-gray-700">
-            <p className="text-cabin-muted">Add your Lego image here</p>
-          </div>
         </div>
       </div>
     </div>

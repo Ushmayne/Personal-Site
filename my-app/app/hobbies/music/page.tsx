@@ -21,7 +21,7 @@ export default function MusicPage() {
       <div className="mb-12">
         <div className="flex items-start gap-8 mb-8">
           <div className="flex-1">
-            <h2 className="text-4xl font-bold text-cabin-text mb-4">
+            <h2 className="text-4xl font-bold text-cabin-glow mb-4">
               Music
             </h2>
             <p className="text-cabin-muted text-lg leading-relaxed">
@@ -40,12 +40,7 @@ export default function MusicPage() {
           </p>
         </div>
 
-        {/* Add image placeholder */}
-        <div className="mt-8">
-          <div className="w-full h-64 bg-gray-800 rounded-lg flex items-center justify-center border border-gray-700">
-            <p className="text-cabin-muted">Add your music image here</p>
-          </div>
-        </div>
+        
       </div>
     </div>
   );

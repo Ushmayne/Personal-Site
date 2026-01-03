@@ -1,5 +1,6 @@
 import HobbiesNav from '../HobbiesNav';
 import Image from 'next/image';
+import AnimalFunFact from './AnimalFunFact';
 
 export const metadata = {
   title: 'Learning About Animals | My Hobbies',
@@ -21,31 +22,27 @@ export default function AnimalsPage() {
       <div className="mb-12">
         <div className="flex items-start gap-8 mb-8">
           <div className="flex-1">
-            <h2 className="text-4xl font-bold text-cabin-text mb-4">
+            <h2 className="text-4xl font-bold text-cabin-glow mb-4">
               Learning About Animals
             </h2>
-            <p className="text-cabin-muted text-lg leading-relaxed">
-              I'm fascinated by the diversity of wildlife and animal behavior. Understanding how different species adapt and interact with their environments is endlessly interesting.
+            <p className="text-cabin-text text-lg leading-relaxed">
+              My interest in animals began at a young age and was shaped by years of watching educational programming on channels such as Animal Planet and Discovery Channel. I’m fascinated by the diversity of animal life, particularly evolutionary biology, behavioral patterns, and the adaptations that allow species to survive and thrive in unique environments.
             </p>
           </div>
         </div>
 
         {/* Detailed Content */}
-        <div className="space-y-6 text-cabin-muted text-lg leading-relaxed">
+        <div className="space-y-6 text-cabin-text text-lg leading-relaxed">
           <p>
-            Animals represent an incredible diversity of adaptations, behaviors, and survival strategies. I'm fascinated by evolutionary biology, animal behavior patterns, and how different species have evolved to thrive in their unique environments.
+            I enjoy learning about both extinct and modern animals, exploring how different traits emerged in response to environmental pressures over time. I’m also interested in speculative discussions—such as how prehistoric species might interact with the modern world—which highlight the impact of evolution and ecosystem balance.
           </p>
           <p>
-            Whether it's learning about deep-sea creatures, understanding predator-prey relationships, or discovering new species, the natural world offers endless opportunities for wonder and learning. Each animal tells a story of adaptation and survival that never ceases to amaze me.
+            One of the most influential programs from my childhood remains The Crocodile Hunter, hosted by Steve Irwin, whose passion for wildlife education continues to inspire my curiosity and appreciation for the natural world.
           </p>
         </div>
 
-        {/* Add image placeholder */}
-        <div className="mt-8">
-          <div className="w-full h-64 bg-gray-800 rounded-lg flex items-center justify-center border border-gray-700">
-            <p className="text-cabin-muted">Add your animals image here</p>
-          </div>
-        </div>
+        <AnimalFunFact />
+        
       </div>
     </div>
   );
