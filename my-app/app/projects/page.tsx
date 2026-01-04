@@ -54,7 +54,7 @@ export default function Projects() {
     <div className="ml-6 px-12 py-10 min-h-screen">
       <div className="mb-12">
         <h1 className="text-5xl font-bold text-cabin-glow mb-2">Projects</h1>
-        <p className="text-cabin-muted text-lg">Here are some of my recent projects, you can check the rest of my projects on GitHub! </p>
+        <p className="text-cabin-muted text-lg">Here are some of my recent projects, you can check the rest of my projects on <a href="https://github.com/Ushmayne" className="text-cabin-glow">GitHub</a>! </p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
