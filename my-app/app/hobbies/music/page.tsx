@@ -25,7 +25,7 @@ export default function MusicPage() {
               Music
             </h2>
             <p className="text-cabin-muted text-lg leading-relaxed">
-              Music is a universal language. Whether listening to discover new artists or understanding music production, I appreciate its creative and technical aspects.
+              Music is a universal language that connects people across cultures and experiences. Over time, I’ve developed an appreciation for a wide range of musical styles, exploring hundreds of genres and continuously expanding my listening habits.
             </p>
           </div>
         </div>
@@ -33,10 +33,7 @@ export default function MusicPage() {
         {/* Detailed Content */}
         <div className="space-y-6 text-cabin-muted text-lg leading-relaxed">
           <p>
-            Music has the power to move people emotionally and transcend cultural boundaries. I appreciate music from multiple perspectives—the artistry of performers, the technical skill of musicians, the production choices of creators, and the emotional resonance of well-crafted compositions.
-          </p>
-          <p>
-            I enjoy exploring different genres, discovering new artists, and understanding what makes certain pieces resonate with audiences. Whether it's the complexity of orchestral arrangements or the simplicity of acoustic melodies, music continues to inspire and teach me.
+            My interest in music began at a young age after hearing Love the Way You Lie for the first time, which sparked a lasting curiosity to discover new sounds and artists. Since then, I’ve enjoyed broadening my musical taste and sharing music with others as a way to connect and exchange perspectives.
           </p>
         </div>
 

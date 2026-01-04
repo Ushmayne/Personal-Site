@@ -33,20 +33,20 @@ export default function Projects() {
     {
       title: "Poker Game",
       description: "A poker game built in Java in which the AI can hold or fold, there is also a chance it can bluff.",
-      image: "/project-placeholder.jpg",
-      github: "https://github.com/Ushmayne/portfolio-website",
+      image: "/poker.jpg",
+      github: "https://github.com/Ushmayne/Poker",
     },
     {
       title: "Clock Made with OpenGL",
       description: "A simple clock built in OpenGL that displays current system time and updates with each passing second.",
-      image: "/project-placeholder.jpg",
-      github: "https://github.com/Ushmayne/portfolio-website",
+      image: "/clock.jpg",
+      github: "https://github.com/Ushmayne/ClockOpenGL",
     },
     {
       title: "Autonomous Vehicle Simulation in Unity",
       description: "The emphasis of this project is on the localization is the ability of the vehicle to pinpoint its location with the map.",
-      image: "/project-placeholder.jpg",
-      github: "https://github.com/Ushmayne/portfolio-website",
+      image: "/auto.jpg",
+      github: "https://github.com/Ushmayne/AutonomousVehicle",
     },
   ];
 
