@@ -174,18 +174,22 @@ function CollapsibleSection({ title, children, defaultOpen = false }: { title: s
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className="border border-gray-300 rounded-lg mb-4">
+    <div className="mb-4 border border-cabin-text rounded-lg overflow-hidden bg-gray-900">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-4 bg-royal hover:bg-opacity-90 text-cabin-text font-semibold transition-colors"
+        className="w-full flex items-center justify-between p-4 text-cabin-text font-semibold transition-colors hover:bg-black/20 text-cabin-text"
       >
         <span>{title}</span>
         <ChevronDown
           size={24}
-          className={`transform transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
-      {isOpen && <div className="p-4 bg-cabin-text">{children}</div>}
+      <div className={`overflow-hidden transition-all duration-900 ease-in-out ${isOpen ? 'max-h-120' : 'max-h-0'}`}>
+        <div className="p-4 bg-gray-900 border-t border-cabin-text text-cabin-text">
+          {children}
+        </div>
+      </div>
     </div>
   );
 }
@@ -207,17 +211,16 @@ export default function Resume() {
 
         {/* Languages and Dev Tools Section */}
         <section className="mb-8">
-          <h2 className="text-2xl font-bold text-cabin-text mb-4">Languages and Dev Tools</h2>
           <div className="flex gap-12">
             {/* Languages Box */}
-            <div className="bg-cabin-rain p-4 rounded-lg flex-1">
-              <h3 className="text-xl font-semibold text-cabin-panel mb-2 ml-5">Languages</h3>
+            <div className="bg-gray-900 border border-cabin-rain p-4 rounded-lg flex-1">
+              <h3 className="text-xl font-semibold text-cabin-text mb-2 ml-5">Languages</h3>
               <ul className="grid grid-cols-5 gap-6 w-full pl-0 m-0">
                 {languages.map((lang) => (
                   <li key={lang.name} className="text-gray-700 flex flex-col items-center group cursor-default ml-0 text-center min-w-[70px]">
                     <span className="w-2 h-2 bg-royal rounded-full mb-2 flex-shrink-0"></span>
-                    <span className="font-medium text-cabin-text">{lang.name}</span>
-                    <span className="text-xs text-royal font-bold mt-1">
+                    <span className="font-medium font-semibold text-cabin-text">{lang.name}</span>
+                    <span className="text-xs text-cabin-muted font-bold mt-1">
                       {lang.proficiency}
                     </span>
                   </li>
@@ -226,13 +229,13 @@ export default function Resume() {
             </div>
 
             {/* Dev Tools Box */}
-            <div className="bg-cabin-rain p-4 rounded-lg flex-1">
-              <h3 className="text-xl font-semibold text-cabin-panel mb-2 ml-5">Dev Tools</h3>
+            <div className="bg-gray-900 border border-cabin-rain p-4 rounded-lg flex-1">
+              <h3 className="text-xl font-semibold text-cabin-text mb-2 ml-5">Dev Tools</h3>
               <ul className="grid grid-cols-6 gap-6 w-full pl-0 m-0">
                 {devTools.map((tool) => (
                   <li key={tool} className="text-gray-700 flex flex-col items-center m-0 min-w-[70px]">
                     <span className="w-2 h-2 bg-royal rounded-full mb-2 flex-shrink-0"></span>
-                    <span className="text-center text-cabin-text">{tool}</span>
+                    <span className="text-center text-cabin-text font-semibold">{tool}</span>
                   </li>
                 ))}
               </ul>
@@ -246,11 +249,11 @@ export default function Resume() {
           {education.map((edu, index) => (
             <CollapsibleSection key={index} title={`${edu.degree} - ${edu.school}`}>
               <div className="space-y-3">
-                <div className="text-sm text-cabin-panel font-semibold">{edu.duration}</div>
+                <div className="text-sm text-cabin-text font-semibold">{edu.duration}</div>
                 {edu.details && edu.details.length > 0 && (
                   <ul className="space-y-2">
                     {edu.details.map((detail, idx) => (
-                      <li key={idx} className="text-cabin-panel flex items-start">
+                      <li key={idx} className="text-cabin-text flex items-start">
                         <span className="w-2 h-2 bg-royal rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
                         <span>{detail}</span>
                       </li>
@@ -267,11 +270,11 @@ export default function Resume() {
           <h2 className="text-2xl font-bold text-cabin-text mb-4">Job History</h2>
           {jobs.map((job, index) => (
             <CollapsibleSection key={index} title={`${job.title} at ${job.company}`}>
-              <div className="space-y-3">
-                <div className="text-sm text-cabin-panel font-semibold">{job.duration}</div>
-                <ul className="space-y-2">
+              <div className="space-y-3 ">
+                <div className="text-sm text-cabin-text font-semibold">{job.duration}</div>
+                <ul className="space-y-2 ">
                   {job.description.map((desc, idx) => (
-                    <li key={idx} className="text-cabin-panel flex items-start">
+                    <li key={idx} className="text-cabin-text flex items-start">
                       <span className="w-2 h-2 bg-royal rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
                       <span>{desc}</span>
                     </li>
@@ -291,7 +294,7 @@ export default function Resume() {
               <div className="space-y-3">
                 <ul className="space-y-2">
                   {vol.description.map((desc, idx) => (
-                    <li key={idx} className="text-cabin-panel flex items-start">
+                    <li key={idx} className="text-cabin-text flex items-start">
                       <span className="w-2 h-2 bg-royal rounded-full mr-3 mt-1.5 flex-shrink-0"></span>
                       <span>{desc}</span>
                     </li>

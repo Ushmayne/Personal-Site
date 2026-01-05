@@ -24,14 +24,14 @@ export default function MusicPage() {
             <h2 className="text-4xl font-bold text-cabin-glow mb-4">
               Music
             </h2>
-            <p className="text-cabin-muted text-lg leading-relaxed">
+            <p className="text-cabin-text text-lg leading-relaxed">
               Music is a universal language that connects people across cultures and experiences. Over time, I’ve developed an appreciation for a wide range of musical styles, exploring hundreds of genres and continuously expanding my listening habits.
             </p>
           </div>
         </div>
 
         {/* Detailed Content */}
-        <div className="space-y-6 text-cabin-muted text-lg leading-relaxed">
+        <div className="space-y-6 text-cabin-text text-lg leading-relaxed">
           <p>
             My interest in music began at a young age after hearing Love the Way You Lie for the first time, which sparked a lasting curiosity to discover new sounds and artists. Since then, I’ve enjoyed broadening my musical taste and sharing music with others as a way to connect and exchange perspectives.
           </p>
