@@ -152,6 +152,7 @@ const languages: Language[] = [
   { name: 'JavaScript', proficiency: 'Intermediate' },
   { name: 'Python', proficiency: 'Intermediate' },
   { name: 'SQL', proficiency: 'Intermediate' },
+  { name: 'NoSQL', proficiency: 'Intermediate' },
   { name: 'TypeScript', proficiency: 'Intermediate' },
 ];
 
@@ -201,8 +202,8 @@ export default function Resume() {
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-4xl font-bold text-cabin-glow">Resume</h1>
           <a
-            href="/M.Usman_resume.pdf"
-            download="UsmanResume.pdf"
+            href="/UsmanNaveedResume.pdf"
+            download="UsmanNaveedResume.pdf"
             className="bg-royal text-cabin-text hover:text-cabin-glow hover:bg-opacity-90 px-6 py-2 rounded-lg font-semibold transition-all"
           >
             Download Resume
