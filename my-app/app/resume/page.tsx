@@ -203,7 +203,7 @@ export default function Resume() {
           <a
             href="/M.Usman_resume.pdf"
             download="UsmanResume.pdf"
-            className="bg-royal hover:bg-opacity-90 text-cabin-text px-6 py-2 rounded-lg font-semibold transition-all"
+            className="bg-royal text-cabin-text hover:text-cabin-glow hover:bg-opacity-90 px-6 py-2 rounded-lg font-semibold transition-all"
           >
             Download Resume
           </a>
