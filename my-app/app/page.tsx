@@ -64,7 +64,7 @@ export default function Home() {
 
           {/* LinkedIn */}
           <a 
-            href="https://www.linkedin.com/in/mohammad-usman-2b9baa191/" 
+            href="https://www.linkedin.com/in/usman-naveed-2b9baa191/" 
             target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center gap-3 text-cabin-muted hover:text-cabin-glow transition-colors"
