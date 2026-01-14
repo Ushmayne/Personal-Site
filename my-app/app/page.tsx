@@ -40,7 +40,7 @@ export default function Home() {
       <div className="ml-auto">
         <img
           src="/usman.jpg"
-          alt="Usman"
+          alt="usman"
           className="w-[400px] rounded-lg bg-cabin-rain p-2 shadow-2xl"
         />
         <h1 className="mt-4 text-center text-lg font-semibold text-grey-400">Just a fun picture of me</h1>
