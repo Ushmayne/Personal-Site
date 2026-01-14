@@ -39,7 +39,7 @@ export default function Home() {
       {/* IMAGE */}
       <div className="ml-auto">
         <img
-          src="/usman.jpg"
+          src="/usman.JPG"
           alt="usman"
           className="w-[400px] rounded-lg bg-cabin-rain p-2 shadow-2xl"
         />
