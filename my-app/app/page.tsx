@@ -32,7 +32,7 @@ export default function Home() {
         </h1>
         <p className="text-cabin-muted">Glad you're here 👋</p>
         <p className="text-cabin-text">Hi, I’m Usman — a software developer with a curiosity-driven mindset and a love for problem-solving. I enjoy working with puzzles, games, and data, especially when there’s a challenge that requires breaking things down and thinking a few steps ahead. </p>
-        <p>Outside of coding, you’ll usually find me at the gym, exploring new hobbies, or diving into something unfamiliar just to see how it works. I like learning by doing, experimenting with ideas, and refining things until they feel right — whether that’s in code, design, or everyday life..</p>
+        <p>Outside of coding, you’ll usually find me at the gym, exploring new hobbies, or diving into something unfamiliar just to see how it works. I like learning by doing, experimenting with ideas, and refining things until they feel right whether that’s in code, design, or everyday life.</p>
         <p>I’m always interested in building, improving, and discovering what’s next. Feel free to reach out anytime.</p>
       </div>
 
