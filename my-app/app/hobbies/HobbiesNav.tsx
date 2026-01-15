@@ -27,7 +27,6 @@ export default function HobbiesNav({ activeHobby }: HobbiesNavProps) {
               : 'bg-gray-700 text-cabin-text hover:bg-gray-600'
           }`}
         >
-          <span className="text-lg">{hobby.icon}</span>
           <span className="font-medium">{hobby.title}</span>
         </Link>
       ))}

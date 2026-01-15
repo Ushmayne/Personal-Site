@@ -11,6 +11,9 @@ const ibmPlexSans = IBM_Plex_Sans({
 
 export const metadata = {
   title: "Usman Naveed",
+  icons: {
+    icon: "/logo.png", 
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
