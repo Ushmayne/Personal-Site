@@ -112,7 +112,5 @@ app/
 
 ## Deployment
 
-This project is ready for deployment on Vercel, Netlify, or any Node.js hosting:
-
-- **Vercel** (recommended): [Next.js on Vercel](https://vercel.com/new?utm_source=create-next-app)
-- **Other platforms**: See [deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying)
+This project is deployed on Vercel, you can check it out here:
+usmannaveed.ca

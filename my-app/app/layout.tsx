@@ -10,7 +10,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 });
 
 export const metadata = {
-  title: "My Site",
+  title: "Usman Naveed",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
