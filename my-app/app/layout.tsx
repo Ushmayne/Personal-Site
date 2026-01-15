@@ -16,9 +16,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={ibmPlexSans.variable}>
-      <body className="flex bg-cabin-bg font-sans">
+      <body className="flex flex-col md:flex-row bg-cabin-bg font-sans">
         <Sidebar />
-        <main className="ml-[16rem] p-6 flex-1 text-cabin-text">
+        <main className="md:ml-[16rem] p-6 flex-1 text-cabin-text">
           {children}
         </main>
       </body>

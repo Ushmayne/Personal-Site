@@ -197,14 +197,14 @@ function CollapsibleSection({ title, children, defaultOpen = false }: { title: s
 
 export default function Resume() {
   return (
-    <main className="ml-6 px-12 py-10 min-h-screen">
+    <main className="px-4 md:px-6 lg:px-12 py-6 md:py-10 min-h-screen md:ml-6">
       <div className="mb-12">
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="text-4xl font-bold text-cabin-glow">Resume</h1>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+          <h1 className="text-2xl sm:text-4xl font-bold text-cabin-glow">Resume</h1>
           <a
             href="/UsmanNaveedResume.pdf"
             download="UsmanNaveedResume.pdf"
-            className="bg-royal text-cabin-text hover:text-cabin-glow hover:bg-opacity-90 px-6 py-2 rounded-lg font-semibold transition-all"
+            className="bg-royal text-cabin-text hover:text-cabin-glow hover:bg-opacity-90 px-6 py-2 rounded-lg font-semibold transition-all whitespace-nowrap"
           >
             Download Resume
           </a>
@@ -212,15 +212,15 @@ export default function Resume() {
 
         {/* Languages and Dev Tools Section */}
         <section className="mb-8">
-          <div className="flex gap-12">
+          <div className="flex flex-col gap-4 lg:gap-12 lg:flex-row">
             {/* Languages Box */}
-            <div className="bg-gray-900 border border-cabin-rain p-4 rounded-lg flex-1">
-              <h3 className="text-xl font-semibold text-cabin-text mb-2 ml-5">Languages</h3>
-              <ul className="grid grid-cols-5 gap-6 w-full pl-0 m-0">
+            <div className="bg-gray-900 border border-cabin-rain p-4 rounded-lg w-full lg:flex-1">
+              <h3 className="text-lg sm:text-xl font-semibold text-cabin-text mb-2 ml-5">Languages</h3>
+              <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3 md:gap-4 lg:gap-6 w-full pl-0 m-0">
                 {languages.map((lang) => (
-                  <li key={lang.name} className="text-gray-700 flex flex-col items-center group cursor-default ml-0 text-center min-w-[70px]">
+                  <li key={lang.name} className="text-gray-700 flex flex-col items-center group cursor-default ml-0 text-center">
                     <span className="w-2 h-2 bg-royal rounded-full mb-2 flex-shrink-0"></span>
-                    <span className="font-medium font-semibold text-cabin-text">{lang.name}</span>
+                    <span className="font-medium font-semibold text-cabin-text text-xs sm:text-sm">{lang.name}</span>
                     <span className="text-xs text-cabin-muted font-bold mt-1">
                       {lang.proficiency}
                     </span>
@@ -230,13 +230,13 @@ export default function Resume() {
             </div>
 
             {/* Dev Tools Box */}
-            <div className="bg-gray-900 border border-cabin-rain p-4 rounded-lg flex-1">
-              <h3 className="text-xl font-semibold text-cabin-text mb-2 ml-5">Dev Tools</h3>
-              <ul className="grid grid-cols-6 gap-6 w-full pl-0 m-0">
+            <div className="bg-gray-900 border border-cabin-rain p-4 rounded-lg w-full lg:flex-1">
+              <h3 className="text-lg sm:text-xl font-semibold text-cabin-text mb-2 ml-5">Dev Tools</h3>
+              <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-3 md:gap-4 lg:gap-6 w-full pl-0 m-0">
                 {devTools.map((tool) => (
-                  <li key={tool} className="text-gray-700 flex flex-col items-center m-0 min-w-[70px]">
+                  <li key={tool} className="text-gray-700 flex flex-col items-center m-0">
                     <span className="w-2 h-2 bg-royal rounded-full mb-2 flex-shrink-0"></span>
-                    <span className="text-center text-cabin-text font-semibold">{tool}</span>
+                    <span className="text-center text-cabin-text font-semibold text-xs sm:text-sm">{tool}</span>
                   </li>
                 ))}
               </ul>
@@ -246,7 +246,7 @@ export default function Resume() {
 
         {/* Education Section */}
         <section className="mb-8">
-          <h2 className="text-2xl font-bold text-cabin-text mb-4">Education</h2>
+          <h2 className="text-2xl font-bold text-cabin-glow mb-4">Education</h2>
           {education.map((edu, index) => (
             <CollapsibleSection key={index} title={`${edu.degree} - ${edu.school}`}>
               <div className="space-y-3">
@@ -268,7 +268,7 @@ export default function Resume() {
 
         {/* Job History Section */}
         <section className="mb-8">
-          <h2 className="text-2xl font-bold text-cabin-text mb-4">Job History</h2>
+          <h2 className="text-2xl font-bold text-cabin-glow mb-4">Job History</h2>
           {jobs.map((job, index) => (
             <CollapsibleSection key={index} title={`${job.title} at ${job.company}`}>
               <div className="space-y-3 ">
@@ -289,7 +289,7 @@ export default function Resume() {
 
         {/* Volunteer Work Section */}
         <section className="mb-8">
-          <h2 className="text-2xl font-bold text-cabin-text mb-4">Volunteer Work</h2>
+          <h2 className="text-2xl font-bold text-cabin-glow mb-4">Volunteer Work</h2>
           {volunteerWork.map((vol, index) => (
             <CollapsibleSection key={index} title={`${vol.title} at ${vol.organization}`}>
               <div className="space-y-3">
