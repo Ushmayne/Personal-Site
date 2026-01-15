@@ -49,7 +49,6 @@ export default async function HobbyPage({ params }: HobbyPageProps) {
 
       {/* Hobby Content */}
       <div className="flex items-start gap-8 mb-12">
-        <div className="text-8xl flex-shrink-0">{hobby.icon}</div>
         <div className="flex-1">
           <h2 className="text-4xl font-bold text-cabin-text mb-4">
             {hobby.title}
@@ -57,7 +56,7 @@ export default async function HobbyPage({ params }: HobbyPageProps) {
           <p className="text-cabin-muted text-lg leading-relaxed">
             {hobby.longDescription}
           </p>
-          <p className='text-cabin-muted text=lg leading-relaxed'>
+          <p className='text-cabin-muted text-lg leading-relaxed'>
             {hobby.shortDescription}
           </p>
         </div>
