@@ -52,7 +52,7 @@ export default function MusicPage() {
             My interest in music began at a young age after hearing Love the Way You Lie for the first time, which sparked a lasting curiosity to discover new sounds and artists. Since then, I’ve enjoyed broadening my musical taste and sharing music with others as a way to connect and exchange perspectives.
           </p>
           <p> Here is a song I have recently been listening to: </p>
-          <div className="w-full overflow-hidden" style={{ aspectRatio: "1 / 1.15" }}>
+          <div className="w-full overflow-hidden " style={{ aspectRatio: "1 / 1.15" }}>
             <iframe data-testid="embed-iframe" style={{ borderRadius: "12px", width: "100%", height: "10%" }} src={randomSpotifyUrl} frameBorder="0" allowFullScreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </div>
         </div>
