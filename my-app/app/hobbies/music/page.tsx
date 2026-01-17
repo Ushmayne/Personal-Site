@@ -8,11 +8,10 @@ export const metadata = {
 // Array of Spotify embed URLs to choose from
 
 const spotifyEmbeds = [
-  "https://open.spotify.com/embed/track/4NctNkFaMwv4cvgtB7l1JX?utm_source=generator",
-  "https://open.spotify.com/embed/track/5Y6nVaayzitvsD5F7nr3DV?utm_source=generator",
-  "https://open.spotify.com/embed/track/01vCzM84c5JLSkG2iXC9VZ?utm_source=generator",
-  "https://open.spotify.com/embed/track/1E0g6RGjNImtYGXrpKw2Mn?utm_source=generator",
-  "https://open.spotify.com/embed/track/1S3D66ibMVgNxOOZLKmhH0?utm_source=generator",
+  "https://open.spotify.com/embed/playlist/1LdWCxWShesLYcydJnBUkW?utm_source=generator",
+  "https://open.spotify.com/embed/playlist/1K9JlXY8NM1N6iTfoa19ey?utm_source=generator",
+  "https://open.spotify.com/embed/playlist/7f9mzBv9psA5A1XftsWXzG?utm_source=generator",
+  "https://open.spotify.com/embed/playlist/4MKojhTIuKrzmruNd0bRzb?utm_source=generator",
 ];
 
 function getRandomSpotifyEmbed() {
@@ -51,9 +50,9 @@ export default function MusicPage() {
           <p>
             My interest in music began at a young age after hearing Love the Way You Lie for the first time, which sparked a lasting curiosity to discover new sounds and artists. Since then, I’ve enjoyed broadening my musical taste and sharing music with others as a way to connect and exchange perspectives.
           </p>
-          <p> Here is a song I have recently been listening to: </p>
+          <p> Enjoy a random playlist of mine: </p>
           <div className="w-full overflow-hidden " style={{ aspectRatio: "1 / 1.15" }}>
-            <iframe data-testid="embed-iframe" style={{ borderRadius: "12px", width: "100%", height: "10%" }} src={randomSpotifyUrl} frameBorder="0" allowFullScreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe data-testid="embed-iframe" style={{ borderRadius: "12px", width: "100%", height: "20%" }} src={randomSpotifyUrl} frameBorder="0" allowFullScreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </div>
         </div>
 
