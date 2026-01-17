@@ -1,9 +1,5 @@
 import HobbiesNav from '../HobbiesNav';
-import Image from 'next/image';
 
-export const metadata = {
-  title: 'Lego | My Hobbies',
-};
 
 export default function LegoPage() {
   return (

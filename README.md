@@ -2,6 +2,8 @@
 
 A modern, responsive personal portfolio website built with Next.js 16, React 19, and Tailwind CSS. Showcasing projects, hobbies, resume, and interactive features.
 
+You can check out the website at usmannaveed.ca
+
 ## Overview
 
 This is the second version of a personal portfolio site designed to showcase projects, hobbies, and professional experience. The site features a clean, modern design with multiple sections and interactive content.
@@ -9,15 +11,15 @@ This is the second version of a personal portfolio site designed to showcase pro
 ## Features
 
 - **Hobbies Section**: Explore various interests including:
-  - 🎮 Gaming
-  - 🏋️ Gym & Fitness
-  - 🎵 Music
-  - 🧱 LEGO
-  - 🦁 Animal Fun Facts (with API integration)
+  - Gaming
+  - Gym & Fitness
+  - Music
+  - LEGO
+  - Animal Fun Facts (with API integration)
   
 - **Projects Page**: Portfolio of personal and professional projects
 - **Resume Page**: Professional background and experience
-- **Responsive Design**: Built with Tailwind CSS for mobile and desktop optimization
+- **Responsive Design**: Built with Tailwind CSS 
 - **Modern Stack**: Next.js 16 with TypeScript support
 - **API Routes**: Custom backend endpoints for dynamic content
 
@@ -97,14 +99,16 @@ my-app/
 ## Key Sections
 
 - **Home**: Landing page with navigation
+- **Resume**: Professional summary and experience
+- **Projects**: Portfolio of completed projects
 - **Hobbies**: 
   - Animals: Fun facts fetched from animal API
   - Gaming: Gaming interests and experience
   - Gym: Fitness routines and goals
   - LEGO: LEGO collections and builds
   - Music: Music preferences and interests
-- **Projects**: Portfolio of completed projects
-- **Resume**: Professional summary and experience
+
+
 
 ## API Endpoints
 

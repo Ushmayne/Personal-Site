@@ -2,10 +2,6 @@ import HobbiesNav from '../HobbiesNav';
 import Image from 'next/image';
 import AnimalFunFact from './AnimalFunFact';
 
-export const metadata = {
-  title: 'Learning About Animals | My Hobbies',
-};
-
 export default function AnimalsPage() {
   return (
     <div className="ml-6 px-12 py-10 min-h-screen">

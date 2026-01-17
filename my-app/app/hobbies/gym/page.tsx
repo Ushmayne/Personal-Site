@@ -1,9 +1,6 @@
 import HobbiesNav from '../HobbiesNav';
 import Image from 'next/image';
 
-export const metadata = {
-  title: 'Gym | My Hobbies',
-};
 
 export default function GymPage() {
   return (
