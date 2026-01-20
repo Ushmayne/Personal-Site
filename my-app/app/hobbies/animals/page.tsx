@@ -30,7 +30,7 @@ export default function AnimalsPage() {
         {/* Detailed Content */}
         <div className="space-y-6 text-cabin-text text-lg leading-relaxed">
           <p>
-            I enjoy learning about both extinct and modern animals, exploring how different traits emerged in response to environmental pressures over time. I’m also interested in speculative discussions—such as how prehistoric species might interact with the modern world—which highlight the impact of evolution and ecosystem balance.
+            I enjoy learning about both extinct and modern animals, exploring how different traits emerged in response to environmental pressures over time. I'm also interested in speculative discussions such as how prehistoric species might interact with the modern world which highlight the impact of evolution and ecosystem balance.
           </p>
           <p>
             One of the most influential programs from my childhood remains The Crocodile Hunter, hosted by Steve Irwin, whose passion for wildlife education continues to inspire my curiosity and appreciation for the natural world.
