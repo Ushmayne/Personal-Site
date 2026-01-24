@@ -31,7 +31,7 @@ export default function GymPage() {
         {/* Detailed Content */}
         <div className="space-y-6 text-cabin-text text-lg leading-relaxed">
           <p>
-            I enjoy learning about the human body to optimize my training, experimenting with different exercises and workout splits to understand how my body responds. I am currently following an upper–lower split with a focus on bodybuilding, while also having experience with powerlifting-style training—most notably increasing my deadlift from 405 lbs to 455 lbs within a month.
+            I enjoy learning about the human body to optimize my training, experimenting with different exercises and workout splits to understand how my body responds. I am currently following an upper-lower split with a focus on bodybuilding, while also having experience with powerlifting style training most notably increasing my deadlift from 405 lbs to 455 lbs within a month.
           </p>
           <p>
             Beyond strength training, I am currently preparing for a Ironman event scheduled for October 2026. This goal continues to reinforce consistency, resilience, and long-term commitment. Wish me luck.

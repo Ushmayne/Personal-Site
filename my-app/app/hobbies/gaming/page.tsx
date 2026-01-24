@@ -34,13 +34,13 @@ export default function GamingPage() {
         {/* Detailed Content */}
         <div className="space-y-6 text-cabin-text text-lg leading-relaxed">
           <p>
-            I have played games across multiple generations and platforms, including the PlayStation 1, PlayStation 2, PlayStation 3, original Game Boy Advance, Xbox One, and currently on Nintendo Switch and PC. This long-term exposure to different hardware generations and ecosystems has given me a broad perspective on how games evolve in terms of performance, controls, interfaces, and player expectations.
+            I have played games across multiple generations and platforms, including the PlayStation 1, PlayStation 2, PlayStation 3, original Game Boy Advance, Xbox One, and currently on Nintendo Switch and PC. This long term exposure to different hardware generations and ecosystems has given me a broad perspective on how games evolve in terms of performance, controls, interfaces, and player expectations.
           </p>
           <p>
-            Over the years, I have played a wide range of games across multiple genres, each offering something unique. I’ve enjoyed the narrative-driven puzzle solving found in series such as Uncharted, the fast-paced competitiveness of shooters like Call of Duty: Black Ops II, and the progression-focused systems and optimization challenges present in games like Destiny. These experiences highlighted how different design choices shape player engagement and replayability.
+            Over the years, I have played a wide range of games across multiple genres, each offering something unique. I’ve enjoyed the narrative driven puzzle solving found in series such as Uncharted, the fast paced competitiveness of shooters like Call of Duty: Black Ops II, and the progression focused systems and optimization challenges present in games like Destiny. These experiences highlighted how different design choices shape player engagement and replayability.
           </p>
           <p>
-            Beyond playing for enjoyment, I actively analyze games from a developer’s perspective. I pay close attention to level design, system mechanics, user experience, art direction, sound design, and replay value. This mindset has strengthened my problem-solving skills, design thinking, and appreciation for clean, well-structured systems—skills that directly translate to software development.
+            Beyond playing for enjoyment, I actively analyze games from a developer’s perspective. I pay close attention to level design, system mechanics, user experience, art direction, sound design, and replay value. This mindset has strengthened my problem-solving skills, design thinking, and appreciation for clean, well structured systems skills that directly translate to software development.
           </p>
           <p>
             Gaming has helped cultivate my creativity, persistence, and analytical approach to building systems. It continues to influence how I learn, design, and develop software today.         
