@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={ibmPlexSans.variable}>
       <body className="flex flex-col md:flex-row bg-cabin-bg font-sans">
         <Sidebar />
-        <main className="md:ml-[16rem] p-6 flex-1 text-cabin-text">
+        <main className="w-full md:ml-[16rem] md:flex-1 p-4 md:p-6 text-cabin-text mt-16 md:mt-0">
           {children}
         </main>
       </body>
