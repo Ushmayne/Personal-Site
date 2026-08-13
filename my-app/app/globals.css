@@ -519,6 +519,7 @@ html.light .theme-toggle .icon-moon { display: none; }
   border-radius: var(--r-sm);
   overflow: hidden;
 }
+.thumb-img { object-fit: cover; }
 .thumb-1 { background: color-mix(in srgb, var(--azure) 16%, var(--panel-2)); }
 .thumb-2 { background: color-mix(in srgb, var(--spark) 14%, var(--panel-2)); }
 .thumb-3 { background: color-mix(in srgb, var(--paper) 8%, var(--panel-2)); }

@@ -1,13 +1,23 @@
 import Image from 'next/image';
 
-const projects = [
+type Project = {
+  kind: string;
+  title: string;
+  desc: string;
+  tags: string[];
+  thumb: string;
+  image?: string;
+  href: string | null;
+};
+
+const projects: Project[] = [
   {
     kind: 'CLIENT PROJECT',
     title: 'Naveed Legal Suite',
     desc: 'Brand + website for a legal practice, designed and built end to end.',
     tags: ['Next.js', 'TypeScript', 'Tailwind'],
     thumb: 'thumb-1',
-    href: null,
+    href: 'https://www.naveedlegalsuite.com/',
   },
   {
     kind: 'PERSONAL PROJECT',
@@ -31,6 +41,7 @@ const projects = [
     desc: "A Discord bot that streams music, chats via OpenAI's API, and rewards active users with points.",
     tags: ['Node.js', 'discord.js', 'OpenAI API'],
     thumb: 'thumb-4',
+    image: '/BotPhoto.jpg',
     href: 'https://github.com/Ushmayne/discordBot',
   },
 ];
@@ -131,7 +142,17 @@ export default function Home() {
                 const card = (
                   <>
                     <div className={`thumb ${project.thumb}`}>
-                      <span className="frame-dashed annot" aria-hidden="true"></span>
+                      {project.image ? (
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          sizes="(max-width: 900px) 100vw, 50vw"
+                          className="thumb-img"
+                        />
+                      ) : (
+                        <span className="frame-dashed annot" aria-hidden="true"></span>
+                      )}
                     </div>
                     <p className="project-kind mono">{project.kind}</p>
                     <h3>{project.title}</h3>
