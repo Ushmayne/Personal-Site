@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { Protractor, DraftingCompass, SetSquare } from './components/BlueprintTools';
 
 type Project = {
   kind: string;
@@ -9,6 +10,21 @@ type Project = {
   image?: string;
   href: string | null;
 };
+
+type ExperienceItem = {
+  title: string;
+  company: string;
+  duration: string;
+};
+
+const experience: ExperienceItem[] = [
+  { title: 'Freelance Web Developer', company: 'Self-employed', duration: 'Jul 2026 – Present' },
+  { title: 'Production and Maintenance Supervisor', company: 'Stellantis', duration: 'Jan 2025 – Present' },
+  { title: 'Tech Teacher', company: 'Lakeview Montessori School', duration: 'Oct 2023 – Dec 2024' },
+  { title: 'CEO', company: 'Huda Nasir Al-Fadak', duration: 'Feb 2022 – Feb 2024' },
+  { title: 'Software Developer', company: 'Canadian Tire Corporation', duration: 'May 2019 – Dec 2019' },
+  { title: 'Software Developer', company: 'Papp Plastics & Distributing Ltd.', duration: 'May 2018 – Aug 2018' },
+];
 
 const projects: Project[] = [
   {
@@ -91,6 +107,7 @@ export default function Home() {
                   <div className="spec-row"><dt>Stack</dt><dd>React · Node · Python</dd></div>
                 </dl>
               </div>
+              <Protractor className="bp-tool bp-tool-protractor annot" />
             </div>
           </div>
         </section>
@@ -185,11 +202,33 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="experience" id="experience">
+          <div className="wrap">
+            <p className="eyebrow annot">
+              <span className="fig-tag">FIG.04</span> — EXPERIENCE
+            </p>
+            <h2 className="section-title">Where I&rsquo;ve worked</h2>
+
+            <div className="timeline">
+              {experience.map((job, index) => (
+                <div
+                  className={`timeline-item ${index % 2 === 0 ? 'timeline-left' : 'timeline-right'}`}
+                  key={`${job.title}-${job.company}`}
+                >
+                  <span className="timeline-dot" aria-hidden="true"></span>
+                  <h3 className="timeline-role">{job.title}</h3>
+                  <p className="timeline-meta mono">{job.company} · {job.duration}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="about" id="about">
           <div className="wrap about-grid">
             <div className="about-text">
               <p className="eyebrow annot">
-                <span className="fig-tag">FIG.04</span> — ABOUT
+                <span className="fig-tag">FIG.05</span> — ABOUT
               </p>
               <h2 className="section-title">The person behind the code</h2>
               <p>
@@ -205,6 +244,7 @@ export default function Home() {
                 <span className="chip">Retro gaming</span>
                 <span className="chip">Collecting</span>
               </div>
+              <DraftingCompass className="bp-tool bp-tool-compass annot" />
             </div>
             <div className="about-photo">
               <div className="photo-box">
@@ -215,9 +255,10 @@ export default function Home() {
         </section>
 
         <section className="contact" id="contact">
+          <SetSquare className="bp-tool bp-tool-square annot" />
           <div className="wrap contact-inner">
             <p className="eyebrow annot">
-              <span className="fig-tag">FIG.05</span> — CONTACT
+              <span className="fig-tag">FIG.06</span> — CONTACT
             </p>
             <h2 className="section-title">Let&rsquo;s build something.</h2>
             <p className="contact-lead">Got a project, an idea, or just want to say hi? My inbox is open.</p>
