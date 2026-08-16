@@ -143,7 +143,7 @@ export default function Home() {
                   <li><span className="plus">+</span> Design + build, start to finish</li>
                   <li><span className="plus">+</span> Yours to own — no lock-in</li>
                 </ul>
-                <a href="#contact" className="see-link">SEE PROJECTS →</a>
+                <a href="#work" className="see-link">SEE PROJECTS →</a>
               </article>
             </div>
           </div>
