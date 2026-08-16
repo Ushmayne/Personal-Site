@@ -33,6 +33,7 @@ const projects: Project[] = [
     desc: 'Brand + website for a legal practice, designed and built end to end.',
     tags: ['Next.js', 'TypeScript', 'Tailwind'],
     thumb: 'thumb-1',
+    image: '/naveedLegalSuite.JPG',
     href: 'https://www.naveedlegalsuite.com/',
   },
   {
@@ -41,6 +42,7 @@ const projects: Project[] = [
     desc: 'Family care coordination app — medications, appointments, visit notes, and shared tasks in one hub.',
     tags: ['Next.js', 'Supabase', 'TypeScript'],
     thumb: 'thumb-2',
+    image: '/careLog.jpg',
     href: 'https://github.com/Ushmayne/carelog',
   },
   {

@@ -257,8 +257,10 @@ body.built .dwg-label { opacity: 0; }
   border-radius: var(--r-sm);
   color: var(--accent);
   flex: none;
+  overflow: hidden;
   transition: color .5s ease;
 }
+.mono-box img { width: 100%; height: 100%; object-fit: cover; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.25; }
 .brand-name { font-family: var(--font-fraunces), serif; font-size: 1.02rem; font-weight: 600; color: var(--paper); }
 .brand-sub {

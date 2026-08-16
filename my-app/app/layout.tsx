@@ -46,7 +46,7 @@ export const metadata: Metadata = {
       "Software developer based in Windsor, Ontario. Check out my projects, resume, and hobbies.",
   },
   icons: {
-    icon: "/logo.png",
+    icon: "/icon.png",
   },
 };
 
