@@ -1,4 +1,3 @@
-import { time } from 'console';
 import HobbiesNav from '../HobbiesNav';
 import Image from 'next/image';
 
@@ -67,7 +66,7 @@ export default function GamingPage() {
             ].map((game) => (
               <div
                 key={game.rank}
-                className="bg-gray-900 rounded-lg p-4 border border-gray-700 hover:border-cabin-glow transition-colors"
+                className="bg-cabin-panel rounded-lg p-4 border border-cabin-rain hover:border-cabin-glow transition-colors"
               >
                 <div className="flex items-start gap-4">
                   <span className="text-cabin-glow font-bold text-xl min-w-fit">

@@ -1,117 +1,305 @@
-'use client';
+import Image from 'next/image';
+import { Protractor, DraftingCompass, SetSquare } from './components/BlueprintTools';
 
-import { useState, useEffect } from 'react';
+type Project = {
+  kind: string;
+  title: string;
+  desc: string;
+  tags: string[];
+  thumb: string;
+  image?: string;
+  href: string | null;
+};
+
+type ExperienceItem = {
+  title: string;
+  company: string;
+  duration: string;
+};
+
+const experience: ExperienceItem[] = [
+  { title: 'Freelance Web Developer', company: 'Self-employed', duration: 'Jul 2026 – Present' },
+  { title: 'Production and Maintenance Supervisor', company: 'Stellantis', duration: 'Jan 2025 – Present' },
+  { title: 'Tech Teacher', company: 'Lakeview Montessori School', duration: 'Oct 2023 – Dec 2024' },
+  { title: 'CEO', company: 'Huda Nasir Al-Fadak', duration: 'Feb 2022 – Feb 2024' },
+  { title: 'Software Developer', company: 'Canadian Tire Corporation', duration: 'May 2019 – Dec 2019' },
+  { title: 'Software Developer', company: 'Papp Plastics & Distributing Ltd.', duration: 'May 2018 – Aug 2018' },
+];
+
+const projects: Project[] = [
+  {
+    kind: 'CLIENT PROJECT',
+    title: 'Naveed Legal Suite',
+    desc: 'Brand + website for a legal practice, designed and built end to end.',
+    tags: ['Next.js', 'TypeScript', 'Tailwind'],
+    thumb: 'thumb-1',
+    image: '/naveedLegalSuite.JPG',
+    href: 'https://www.naveedlegalsuite.com/',
+  },
+  {
+    kind: 'PERSONAL PROJECT',
+    title: 'CareLog',
+    desc: 'Family care coordination app — medications, appointments, visit notes, and shared tasks in one hub.',
+    tags: ['Next.js', 'Supabase', 'TypeScript'],
+    thumb: 'thumb-2',
+    image: '/careLog.jpg',
+    href: 'https://github.com/Ushmayne/carelog',
+  },
+  {
+    kind: 'TEAM TOOL',
+    title: 'Task tracker',
+    desc: 'Team task management app with role-based permissions — assign, track, and complete work across multiple teams.',
+    tags: ['Next.js', 'Supabase', 'TypeScript'],
+    thumb: 'thumb-3',
+    href: 'https://github.com/Ushmayne/Task-Tracker',
+  },
+  {
+    kind: 'AI PROJECT',
+    title: 'ChillBot',
+    desc: "A Discord bot that streams music, chats via OpenAI's API, and rewards active users with points.",
+    tags: ['Node.js', 'discord.js', 'OpenAI API'],
+    thumb: 'thumb-4',
+    image: '/BotPhoto.jpg',
+    href: 'https://github.com/Ushmayne/discordBot',
+  },
+];
 
 export default function Home() {
-  const [displayedText, setDisplayedText] = useState('');
-  const fullText = 'Welcome!';
-
-  useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index <= fullText.length) {
-        setDisplayedText(fullText.slice(0, index));
-        index++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 200);
-
-    return () => clearInterval(timer);
-  }, []);
-
   return (
-        <main className="ml-6 px-12 py-10">
-    <div className="flex items-start gap-12">
-      
-      {/* TEXT */}
-      <div className="max-w-3xl space-y-4 flex-1">
-        <h1 className="text-4xl font-courier font-bold text-cabin-glow">
-          {displayedText}
-          <span className="animate-pulse"></span>
-        </h1>
-        <p className="text-cabin-muted">Glad you're here 👋</p>
-        <p className="text-cabin-text">Hi, I’m Usman — a software developer with a curiosity-driven mindset and a love for problem-solving. I enjoy working with puzzles, games, and data, especially when there’s a challenge that requires breaking things down and thinking a few steps ahead. </p>
-        <p>Outside of coding, you’ll usually find me at the gym, exploring new hobbies, or diving into something unfamiliar just to see how it works. I like learning by doing, experimenting with ideas, and refining things until they feel right whether that’s in code, design, or everyday life.</p>
-        <p>I’m always interested in building, improving, and discovering what’s next. Feel free to reach out anytime.</p>
+    <div className="-m-4 md:-m-6">
+      <div className="grid-bg" aria-hidden="true"></div>
+
+      <div id="top">
+        <section className="hero">
+          <div className="wrap hero-grid">
+            <div className="hero-left">
+              <p className="eyebrow annot">
+                <span className="fig-tag">FIG.01</span> — INDEX
+              </p>
+              <div className="dim-line annot">
+                <span className="dim-tick"></span>
+                <span className="dim-rule"></span>
+                <span className="dim-label">01 · PROFILE — SCALE 1:1</span>
+                <span className="dim-rule"></span>
+                <span className="dim-tick"></span>
+              </div>
+              <h1 className="hero-title">
+                I design &amp; <em>build</em> things worth sharing.
+              </h1>
+              <p className="hero-lead">
+                I&rsquo;m a software developer who&rsquo;s curious by nature — I break problems down and think a few
+                steps ahead, then build the thing properly so it&rsquo;s actually worth using.
+              </p>
+              <div className="hero-ctas">
+                <a href="#work" className="btn btn-primary">See the work</a>
+                <a href="#contact" className="btn btn-ghost">Build a site with me</a>
+              </div>
+            </div>
+
+            <div className="hero-right">
+              <div className="spec-card">
+                <div className="spec-head">
+                  <span className="spec-head-label mono">DRAWING — U.N / PROFILE</span>
+                  <span className="status-dot" aria-hidden="true"></span>
+                </div>
+                <dl className="spec-rows">
+                  <div className="spec-row"><dt>Role</dt><dd>Software developer</dd></div>
+                  <div className="spec-row"><dt>Focus</dt><dd>Web · Games · Data</dd></div>
+                  <div className="spec-row"><dt>Status</dt><dd className="status-amber">Open to work</dd></div>
+                  <div className="spec-row"><dt>Stack</dt><dd>React · Node · Python</dd></div>
+                </dl>
+              </div>
+              <Protractor className="bp-tool bp-tool-protractor annot" />
+            </div>
+          </div>
+        </section>
+
+        <section className="services" id="services">
+          <div className="wrap">
+            <p className="eyebrow annot">
+              <span className="fig-tag">FIG.02</span> — SERVICES
+            </p>
+            <h2 className="section-title">Two ways to work together</h2>
+
+            <div className="services-grid">
+              <article className="service-card">
+                <span className="dwg-label annot mono">DWG-02A</span>
+                <h3>For teams</h3>
+                <p className="service-kicker">Software development</p>
+                <ul className="plus-list">
+                  <li><span className="plus">+</span> Full-stack web apps &amp; internal tools</li>
+                  <li><span className="plus">+</span> Data, automation, problem-solving</li>
+                  <li><span className="plus">+</span> Clean, documented, maintainable code</li>
+                </ul>
+                <a href="#work" className="see-link">SEE PROJECTS →</a>
+              </article>
+
+              <article className="service-card">
+                <span className="dwg-label annot mono">DWG-02B</span>
+                <h3>For you</h3>
+                <p className="service-kicker">I&rsquo;ll build your site</p>
+                <ul className="plus-list">
+                  <li><span className="plus">+</span> Portfolios &amp; personal brands</li>
+                  <li><span className="plus">+</span> Design + build, start to finish</li>
+                  <li><span className="plus">+</span> Yours to own — no lock-in</li>
+                </ul>
+                <a href="#contact" className="see-link">SEE PROJECTS →</a>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section className="work" id="work">
+          <div className="wrap">
+            <p className="eyebrow annot">
+              <span className="fig-tag">FIG.03</span> — SELECTED WORK
+            </p>
+            <h2 className="section-title">My projects</h2>
+
+            <div className="work-grid">
+              {projects.map((project) => {
+                const card = (
+                  <>
+                    <div className={`thumb ${project.thumb}`}>
+                      {project.image ? (
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          sizes="(max-width: 900px) 100vw, 50vw"
+                          className="thumb-img"
+                        />
+                      ) : (
+                        <span className="frame-dashed annot" aria-hidden="true"></span>
+                      )}
+                    </div>
+                    <p className="project-kind mono">{project.kind}</p>
+                    <h3>{project.title}</h3>
+                    <p className="project-desc">{project.desc}</p>
+                    <div className="chips">
+                      {project.tags.map((tag) => (
+                        <span className="chip" key={tag}>{tag}</span>
+                      ))}
+                    </div>
+                  </>
+                );
+
+                return project.href ? (
+                  <a
+                    key={project.title}
+                    className="project-card"
+                    href={project.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {card}
+                  </a>
+                ) : (
+                  <article key={project.title} className="project-card">
+                    {card}
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="experience" id="experience">
+          <div className="wrap">
+            <p className="eyebrow annot">
+              <span className="fig-tag">FIG.04</span> — EXPERIENCE
+            </p>
+            <h2 className="section-title">Where I&rsquo;ve worked</h2>
+
+            <div className="timeline">
+              {experience.map((job, index) => (
+                <div
+                  className={`timeline-item ${index % 2 === 0 ? 'timeline-left' : 'timeline-right'}`}
+                  key={`${job.title}-${job.company}`}
+                >
+                  <span className="timeline-dot" aria-hidden="true"></span>
+                  <h3 className="timeline-role">{job.title}</h3>
+                  <p className="timeline-meta mono">{job.company} · {job.duration}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="about" id="about">
+          <div className="wrap about-grid">
+            <div className="about-text">
+              <p className="eyebrow annot">
+                <span className="fig-tag">FIG.05</span> — ABOUT
+              </p>
+              <h2 className="section-title">The person behind the code</h2>
+              <p>
+                Outside of work I&rsquo;m usually at the gym, chasing a volleyball on the beach, or elbow-deep in a
+                JDM project car that doesn&rsquo;t really need more attention. I collect things I probably don&rsquo;t
+                need and still fire up a retro console more often than I&rsquo;d admit. Same curiosity that drives
+                the code — I just like taking things apart to understand how they work.
+              </p>
+              <div className="hobby-chips">
+                <span className="chip">Gym &amp; lifting</span>
+                <span className="chip">Beach volleyball</span>
+                <span className="chip">JDM cars</span>
+                <span className="chip">Retro gaming</span>
+                <span className="chip">Collecting</span>
+              </div>
+              <DraftingCompass className="bp-tool bp-tool-compass annot" />
+            </div>
+            <div className="about-photo">
+              <div className="photo-box">
+                <Image src="/usman.JPG" alt="Usman Naveed" fill sizes="(max-width: 720px) 320px, 400px" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="contact" id="contact">
+          <SetSquare className="bp-tool bp-tool-square annot" />
+          <div className="wrap contact-inner">
+            <p className="eyebrow annot">
+              <span className="fig-tag">FIG.06</span> — CONTACT
+            </p>
+            <h2 className="section-title">Let&rsquo;s build something.</h2>
+            <p className="contact-lead">Got a project, an idea, or just want to say hi? My inbox is open.</p>
+            <a className="btn btn-primary" href="mailto:usman.nved@gmail.com">Say hello</a>
+            <div className="social-links mono">
+              <a href="https://github.com/Ushmayne" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://www.linkedin.com/in/usman-naveed-2b9baa191/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://www.instagram.com/u_naveed/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            </div>
+          </div>
+        </section>
       </div>
 
-      {/* IMAGE */}
-      <div className="ml-auto">
-        <img
-          src="/usman.JPG"
-          alt="usman"
-          className="w-[400px] rounded-lg bg-cabin-rain p-2 shadow-2xl"
-        />
-        <h1 className="mt-4 text-center text-lg font-semibold text-grey-400">Just a fun picture of me</h1>
-        
-        {/* CONTACT SECTION */}
-        <div className="mt-6 space-y-3">
-          <h2 className="text-lg font-semibold text-cabin-text mb-4">Contact Me</h2>
-          
-          {/* GitHub */}
-          <a 
-            href="https://github.com/Ushmayne" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center gap-3 text-cabin-muted hover:text-cabin-glow transition-colors"
-          >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-            </svg>
-            <span>GitHub: Ushmayne</span>
-          </a>
-
-          {/* LinkedIn */}
-          <a 
-            href="https://www.linkedin.com/in/usman-naveed-2b9baa191/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center gap-3 text-cabin-muted hover:text-cabin-glow transition-colors"
-          >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-            <span>LinkedIn: Usman Naveed</span>
-          </a>
-
-          {/* Instagram */}
-          <a 
-            href="https://www.instagram.com/u_naveed/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center gap-3 text-cabin-muted hover:text-cabin-glow transition-colors"
-          >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-            <span>Instagram: u_naveed</span>
-          </a>
-
-          {/* Email */}
-          <a 
-            href="mailto:usman.nved@gmail.com" 
-            className="flex items-center gap-3 text-cabin-muted hover:text-cabin-glow transition-colors"
-          >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-            </svg>
-            <span>usman.nved@gmail.com</span>
-          </a>
-
-          {/* Location */}
-          <div className="flex items-center gap-3 text-cabin-muted hover:text-cabin-glow transition-colors">
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-            </svg>
-            <span>Windsor, Ontario</span>
+      <footer className="titleblock">
+        <div className="wrap">
+          <div className="tb-grid">
+            <div className="tb-cell">
+              <span className="tb-label">Drawn by</span>
+              <span className="tb-value">Usman Naveed</span>
+            </div>
+            <div className="tb-cell">
+              <span className="tb-label">Title</span>
+              <span className="tb-value">Portfolio</span>
+            </div>
+            <div className="tb-cell">
+              <span className="tb-label">Rev</span>
+              <span className="tb-value">2026.1</span>
+            </div>
+            <div className="tb-cell">
+              <span className="tb-label">Scale</span>
+              <span className="tb-value">1:1</span>
+            </div>
+            <div className="tb-cell">
+              <span className="tb-label">Sheet</span>
+              <span className="tb-value">01/01</span>
+            </div>
           </div>
         </div>
-      </div>
-
-  </div>
-</main>
-
-
+      </footer>
+    </div>
   );
 }
