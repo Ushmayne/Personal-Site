@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Inter, Fraunces, IBM_Plex_Mono } from "next/font/google";
 import Nav from "./components/Nav";
+import IdCard from "./components/IdCard";
 import "./globals.css";
 
 const inter = Inter({
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={`${inter.variable} ${fraunces.variable} ${ibmPlexMono.variable}`}>
       <body>
         <Nav />
+        <IdCard />
         <main className="p-4 md:p-6 text-cabin-text">{children}</main>
       </body>
     </html>
