@@ -761,6 +761,40 @@ html.light .theme-toggle .icon-moon { display: none; }
   right: 64px;
   width: 218px; /* keep in sync with .idcard-card width so it stays fully on-screen */
 }
+/* Scroll-driven "into the clip" tuck. Sits INSIDE .idcard-pivot, wrapping
+   only .idcard-swing (strap + card) — the clip itself is a sibling and never
+   moves, so it reads as the strap/card being reeled up into a clip that
+   stays put, not the whole assembly vanishing. Separate element from
+   .idcard-swing so this transition never fights the JS-driven rotate()
+   inline style on that element. */
+.idcard-retract {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  transform-origin: 0 0;
+  transition: transform .9s cubic-bezier(.34, 1.56, .64, 1), opacity .7s ease;
+}
+.idcard-retract.retracted {
+  transform: translateY(-320px) scale(.78) rotate(-6deg);
+  opacity: .12;
+  /* slow, gradual gather — no snap, reads as the cord being taken up bit by bit */
+  transition: transform 1.5s cubic-bezier(.5, 0, .25, 1), opacity 1.2s ease;
+}
+.idcard-mount.retracted .idcard-sway {
+  animation-play-state: paused;
+}
+/* the strap scrunches like a cord being reeled in, instead of just shrinking */
+.idcard-strap {
+  transform-origin: top center;
+  transition: transform .9s cubic-bezier(.34, 1.56, .64, 1);
+}
+.idcard-retract.retracted .idcard-strap {
+  transform: scaleY(.35) scaleX(1.8);
+  transition: transform 1.5s cubic-bezier(.5, 0, .25, 1);
+}
+
 .idcard-sway {
   position: relative;
   width: 100%;
@@ -779,17 +813,50 @@ html.light .theme-toggle .icon-moon { display: none; }
   width: 0;
   height: 0;
 }
+/* metal badge clip — beveled body, a hinge seam where the jaw would meet,
+   and a small swivel loop hanging below it that the strap threads through */
 .idcard-clip {
   display: block;
   position: absolute;
-  top: -4px;
+  top: -7px;
   left: 50%;
-  width: 36px;
-  height: 11px;
+  width: 42px;
+  height: 16px;
   transform: translateX(-50%);
-  border-radius: 3px;
-  background: linear-gradient(180deg, var(--dim), var(--dim-2));
-  box-shadow: 0 1px 0 rgba(0, 0, 0, .4);
+  border-radius: 4px;
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--dim) 45%, white) 0%,
+    var(--dim) 38%,
+    var(--dim-2) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .65),
+    inset 0 -3px 4px rgba(0, 0, 0, .45),
+    0 2px 4px rgba(0, 0, 0, .4);
+}
+.idcard-clip::before {
+  /* hinge seam */
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  top: 55%;
+  height: 1px;
+  background: rgba(0, 0, 0, .4);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .25);
+}
+.idcard-clip::after {
+  /* swivel loop the strap passes through */
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  width: 10px;
+  height: 8px;
+  transform: translateX(-50%);
+  border: 2px solid var(--dim-2);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  background: color-mix(in srgb, var(--dim-2) 30%, transparent);
 }
 
 /* Everything below the clip — strap and card — lives inside this single
@@ -811,8 +878,18 @@ html.light .theme-toggle .icon-moon { display: none; }
   left: -3px;
   width: 6px;
   height: 208px; /* keep in sync with ROPE_LENGTH in IdCard.tsx */
-  background: linear-gradient(180deg, var(--accent), var(--accent-soft));
-  border-radius: 2px;
+  /* cylindrical shading (dark-light-dark across the width) blended over the
+     blue gradient so the flat bar reads as a rounded, glossy nylon cord */
+  background-image:
+    linear-gradient(to right,
+      rgba(0, 0, 0, .45) 0%,
+      rgba(255, 255, 255, .6) 38%,
+      rgba(255, 255, 255, .08) 55%,
+      rgba(0, 0, 0, .35) 100%),
+    linear-gradient(180deg, var(--accent-soft) 0%, var(--accent) 14%, var(--accent) 86%, var(--accent-soft) 100%);
+  background-blend-mode: overlay, normal;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
   transition: background .5s ease;
 }
 
@@ -957,6 +1034,9 @@ html.light .theme-toggle .icon-moon { display: none; }
   }
   .idcard-sway, .idcard-hint {
     animation: none !important;
+  }
+  .idcard-retract, .idcard-strap {
+    transition: none !important;
   }
   html { scroll-behavior: auto !important; }
 }

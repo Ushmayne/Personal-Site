@@ -29,6 +29,7 @@ export default function IdCard() {
   const lastPointerTime = useRef(0);
 
   const [hint, setHint] = useState(true);
+  const [retracted, setRetracted] = useState(false);
 
   // The strap and card share one "length" value (rope length + stretch) and one
   // rotation (theta), applied the same way to both, so they can never visually
@@ -108,6 +109,37 @@ export default function IdCard() {
     render();
   }, []);
 
+  // Hides the badge into the "pocket" on scroll-down, brings it back on
+  // scroll-up — direction-based (like a mobile toolbar), not tied to
+  // absolute scroll position, except near the very top where it always shows.
+  useEffect(() => {
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    function evaluate() {
+      const y = window.scrollY;
+      const delta = y - lastY;
+      if (y < 40) {
+        setRetracted(false);
+      } else if (delta > 4) {
+        setRetracted(true);
+      } else if (delta < -4) {
+        setRetracted(false);
+      }
+      lastY = y;
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(evaluate);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   function polarFromPointer(clientX: number, clientY: number) {
     const rect = pivotRef.current?.getBoundingClientRect();
     if (!rect) return { angle: theta.current, stretchAmount: stretch.current };
@@ -125,6 +157,7 @@ export default function IdCard() {
     omega.current = 0;
     stretchVel.current = 0;
     setHint(false);
+    setRetracted(false);
     const { angle, stretchAmount } = polarFromPointer(e.clientX, e.clientY);
     theta.current = angle;
     stretch.current = stretchAmount;
@@ -155,46 +188,48 @@ export default function IdCard() {
 
   return (
     <div className="idcard-layer" aria-hidden="true">
-      <div className="idcard-mount">
+      <div className={`idcard-mount${retracted ? ' retracted' : ''}`}>
         <div className="idcard-sway">
           <div className="idcard-pivot" ref={pivotRef}>
             <span className="idcard-clip" />
-            <div className="idcard-swing" ref={swingRef}>
-              <div className="idcard-strap" ref={strapRef} />
-              <div
-                className="idcard-card"
-                ref={cardRef}
-                onPointerDown={onPointerDown}
-                onPointerMove={onPointerMove}
-                onPointerUp={onPointerUp}
-                onPointerCancel={onPointerUp}
-              >
-                {hint && <span className="idcard-hint mono">DRAG ME</span>}
-                <div className="idcard-hole" />
-                <div className="idcard-inner">
-                  <div className="idcard-head">
-                    <span className="idcard-tag mono">FIG.00 — STAFF ID</span>
+            <div className={`idcard-retract${retracted ? ' retracted' : ''}`}>
+              <div className="idcard-swing" ref={swingRef}>
+                <div className="idcard-strap" ref={strapRef} />
+                <div
+                  className="idcard-card"
+                  ref={cardRef}
+                  onPointerDown={onPointerDown}
+                  onPointerMove={onPointerMove}
+                  onPointerUp={onPointerUp}
+                  onPointerCancel={onPointerUp}
+                >
+                  {hint && <span className="idcard-hint mono">DRAG ME</span>}
+                  <div className="idcard-hole" />
+                  <div className="idcard-inner">
+                    <div className="idcard-head">
+                      <span className="idcard-tag mono">FIG.00 — STAFF ID</span>
+                    </div>
+                    <div className="idcard-photo">
+                      <Image src="/id.jpg" alt="Usman Naveed" fill sizes="170px" />
+                    </div>
+                    <p className="idcard-name">Usman Naveed</p>
+                    <p className="idcard-role mono">SOFTWARE DEVELOPER</p>
+                    <dl className="idcard-rows mono">
+                      <div>
+                        <dt>NO.</dt>
+                        <dd>2026-001</dd>
+                      </div>
+                      <div>
+                        <dt>DEPT</dt>
+                        <dd>ENGINEERING</dd>
+                      </div>
+                      <div>
+                        <dt>STATUS</dt>
+                        <dd className="idcard-status">OPEN TO WORK</dd>
+                      </div>
+                    </dl>
+                    <div className="idcard-barcode" aria-hidden="true" />
                   </div>
-                  <div className="idcard-photo">
-                    <Image src="/usman.JPG" alt="Usman Naveed" fill sizes="170px" />
-                  </div>
-                  <p className="idcard-name">Usman Naveed</p>
-                  <p className="idcard-role mono">SOFTWARE DEVELOPER</p>
-                  <dl className="idcard-rows mono">
-                    <div>
-                      <dt>NO.</dt>
-                      <dd>2026-001</dd>
-                    </div>
-                    <div>
-                      <dt>DEPT</dt>
-                      <dd>ENGINEERING</dd>
-                    </div>
-                    <div>
-                      <dt>STATUS</dt>
-                      <dd className="idcard-status">OPEN TO WORK</dd>
-                    </div>
-                  </dl>
-                  <div className="idcard-barcode" aria-hidden="true" />
                 </div>
               </div>
             </div>
