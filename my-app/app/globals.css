@@ -744,11 +744,219 @@ html.light .theme-toggle .icon-moon { display: none; }
   .tb-cell:first-child { border-top: none !important; }
 }
 
+/* ===================================================================
+   Hanging ID card — draggable badge on a lanyard, clipped to the nav.
+   Physics (pendulum swing) driven by IdCard.tsx; these rules just set
+   the resting pose and decorative chrome.
+   =================================================================== */
+.idcard-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+}
+.idcard-mount {
+  position: absolute;
+  top: 66px;
+  right: 64px;
+  width: 218px; /* keep in sync with .idcard-card width so it stays fully on-screen */
+}
+.idcard-sway {
+  position: relative;
+  width: 100%;
+  transform-origin: top center;
+  animation: idcard-sway 7s ease-in-out infinite;
+}
+@keyframes idcard-sway {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(2deg); }
+  70% { transform: rotate(-1.5deg); }
+}
+.idcard-pivot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+}
+.idcard-clip {
+  display: block;
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 36px;
+  height: 11px;
+  transform: translateX(-50%);
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--dim), var(--dim-2));
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .4);
+}
+
+/* Everything below the clip — strap and card — lives inside this single
+   rotating group. IdCard.tsx only ever sets rotate() on .idcard-swing; the
+   strap and card themselves are static, fixed-offset children, so they can
+   never visually separate no matter the swing angle. */
+.idcard-swing {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+.idcard-strap {
+  position: absolute;
+  top: 0;
+  left: -3px;
+  width: 6px;
+  height: 208px; /* keep in sync with ROPE_LENGTH in IdCard.tsx */
+  background: linear-gradient(180deg, var(--accent), var(--accent-soft));
+  border-radius: 2px;
+  transition: background .5s ease;
+}
+
+/* the plastic sleeve — a clear laminate shell around the printed card */
+.idcard-card {
+  position: absolute;
+  top: 208px; /* keep in sync with ROPE_LENGTH in IdCard.tsx */
+  left: -109px; /* half of the card width below, so it's centred on the strap */
+  width: 218px;
+  padding: 10px;
+  background-color: color-mix(in srgb, var(--panel) 88%, transparent);
+  background-image: linear-gradient(155deg, rgba(255, 255, 255, .12), rgba(255, 255, 255, .015) 45%, rgba(0, 0, 0, .06) 100%);
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: 22px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .3),
+    inset 0 -16px 26px -20px rgba(0, 0, 0, .55),
+    0 22px 48px -16px rgba(0, 0, 0, .55);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  pointer-events: auto;
+  overflow: hidden;
+}
+.idcard-card:active { cursor: grabbing; }
+.idcard-card::after {
+  content: "";
+  position: absolute;
+  inset: -20%; /* oversized so the glare's rotate/shift never reveals a corner gap */
+  pointer-events: none;
+  background: linear-gradient(118deg, transparent 28%, rgba(255, 255, 255, .22) 45%, rgba(255, 255, 255, .06) 56%, transparent 72%);
+  mix-blend-mode: screen;
+  transform: rotate(var(--glare-tilt, 0deg)) translateY(var(--glare-shift, 0px));
+}
+.idcard-hole {
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: var(--ink);
+  border: 1px solid var(--line);
+  z-index: 1;
+}
+
+/* the printed card sitting inside the plastic sleeve */
+.idcard-inner {
+  position: relative;
+  padding: 14px 14px 13px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, .35);
+}
+.idcard-head { display: flex; justify-content: center; margin-bottom: 11px; }
+.idcard-tag { font-size: .6rem; letter-spacing: .08em; color: var(--dim-2); white-space: nowrap; }
+.idcard-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  background: var(--panel-2);
+  margin-bottom: 13px;
+}
+.idcard-photo img { object-fit: cover; }
+.idcard-name {
+  font-family: var(--font-fraunces), serif;
+  font-size: 1.16rem;
+  font-weight: 600;
+  color: var(--paper);
+  text-align: center;
+  margin: 0 0 2px;
+}
+.idcard-role {
+  font-size: .64rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--dim-2);
+  text-align: center;
+  margin: 0 0 15px;
+}
+.idcard-rows { margin: 0 0 15px; display: flex; flex-direction: column; gap: 7px; }
+.idcard-rows > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: .66rem;
+  letter-spacing: .03em;
+  border-bottom: 1px dashed var(--line-soft);
+  padding-bottom: 6px;
+}
+.idcard-rows dt { color: var(--dim-2); margin: 0; }
+.idcard-rows dd { margin: 0; color: var(--paper); }
+.idcard-status { color: var(--spark); font-weight: 600; }
+.idcard-barcode {
+  height: 20px;
+  border-radius: 2px;
+  opacity: .55;
+  background: repeating-linear-gradient(
+    to right,
+    var(--paper) 0 2px, transparent 2px 3px,
+    var(--paper) 5px 6px, transparent 6px 8px,
+    var(--paper) 8px 11px, transparent 11px 13px,
+    var(--paper) 14px 15px, transparent 15px 18px
+  );
+}
+.idcard-hint {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: .58rem;
+  letter-spacing: .12em;
+  color: var(--accent);
+  white-space: nowrap;
+  z-index: 2;
+  animation: idcard-hint-bounce 1.6s ease-in-out infinite;
+}
+@keyframes idcard-hint-bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -4px); }
+}
+
+@media (max-width: 900px) {
+  .idcard-mount { right: 28px; transform-origin: top right; transform: scale(.9); }
+}
+@media (max-width: 720px) {
+  .idcard-mount { right: 16px; transform-origin: top right; transform: scale(.76); }
+}
+@media (max-width: 480px) {
+  .idcard-layer { display: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .status-dot, .grid-bg, .annot, .frame-dashed, .dwg-label, .mode-toggle::before, .hamburger span, body {
     animation-duration: .001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .001ms !important;
+  }
+  .idcard-sway, .idcard-hint {
+    animation: none !important;
   }
   html { scroll-behavior: auto !important; }
 }
