@@ -829,7 +829,7 @@ em { font-style: italic; color: var(--accent); font-weight: 500; transition: col
   box-shadow: inset 0 1px 4px rgba(0, 0, 0, .35);
 }
 .idcard-head { display: flex; justify-content: center; margin-bottom: 11px; }
-.idcard-tag { font-size: .6rem; letter-spacing: .08em; color: var(--dim-2); white-space: nowrap; }
+.idcard-tag { font-family: var(--font-martel), serif; font-size: .6rem; letter-spacing: .08em; color: var(--dim-2); white-space: nowrap; }
 .idcard-photo {
   position: relative;
   width: 100%;
@@ -849,6 +849,7 @@ em { font-style: italic; color: var(--accent); font-weight: 500; transition: col
   margin: 0 0 2px;
 }
 .idcard-role {
+  font-family: var(--font-martel), serif;
   font-size: .64rem;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -861,6 +862,7 @@ em { font-style: italic; color: var(--accent); font-weight: 500; transition: col
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  font-family: var(--font-martel), serif;
   font-size: .66rem;
   letter-spacing: .03em;
   border-bottom: 1px dashed var(--line-soft);
@@ -886,6 +888,7 @@ em { font-style: italic; color: var(--accent); font-weight: 500; transition: col
   top: -24px;
   left: 50%;
   transform: translateX(-50%);
+  font-family: var(--font-martel), serif;
   font-size: .58rem;
   letter-spacing: .12em;
   color: var(--accent);
