@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 
 type Project = {
   title: string;
@@ -132,6 +135,11 @@ export default function Projects() {
   const featured = projects.filter((p) => p.featured);
   const rest = projects.filter((p) => !p.featured);
 
+  const PAGE_SIZE = 4;
+  const totalPages = Math.max(1, Math.ceil(rest.length / PAGE_SIZE));
+  const [page, setPage] = useState(0);
+  const visibleRest = rest.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE);
+
   return (
     <div className="ml-6 px-12 py-10 min-h-screen">
       <div className="mb-12">
@@ -158,12 +166,44 @@ export default function Projects() {
         <div className="flex-1 h-px bg-cabin-rain opacity-30" />
       </div>
 
-      {/* Rest of projects */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {rest.map((project, index) => (
-          <ProjectCard key={index} project={project} />
+      {/* Rest of projects — paginated 4 at a time */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {visibleRest.map((project, index) => (
+          <ProjectCard key={`${page}-${index}`} project={project} />
         ))}
       </div>
+
+      {totalPages > 1 && (
+        <div className="flex items-center justify-center gap-6 mt-8">
+          <button
+            type="button"
+            aria-label="Previous projects"
+            disabled={page === 0}
+            onClick={() => setPage((p) => Math.max(0, p - 1))}
+            className="w-10 h-10 flex items-center justify-center rounded-full border border-cabin-rain text-cabin-glow disabled:opacity-30 disabled:cursor-not-allowed hover:border-cabin-glow transition-colors"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+
+          <span className="text-cabin-muted text-sm">
+            {page + 1} / {totalPages}
+          </span>
+
+          <button
+            type="button"
+            aria-label="Next projects"
+            disabled={page === totalPages - 1}
+            onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
+            className="w-10 h-10 flex items-center justify-center rounded-full border border-cabin-rain text-cabin-glow disabled:opacity-30 disabled:cursor-not-allowed hover:border-cabin-glow transition-colors"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+      )}
     </div>
   );
 }

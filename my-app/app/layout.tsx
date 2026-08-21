@@ -1,27 +1,32 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
-import { Inter, Fraunces, IBM_Plex_Mono } from "next/font/google";
+import { Oswald, Martel, IBM_Plex_Mono, Barlow_Semi_Condensed } from "next/font/google";
 import Nav from "./components/Nav";
 import IdCard from "./components/IdCard";
 import "./globals.css";
 
-const inter = Inter({
+const oswald = Oswald({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-inter",
+  variable: "--font-oswald",
 });
 
-const fraunces = Fraunces({
+const martel = Martel({
   subsets: ["latin"],
-  weight: ["500", "600"],
-  style: ["normal", "italic"],
-  variable: "--font-fraunces",
+  weight: ["400", "600", "700"],
+  variable: "--font-martel",
 });
 
 const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-ibm-plex-mono",
+});
+
+const barlowSemiCondensed = Barlow_Semi_Condensed({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-barlow-sc",
 });
 
 export const metadata: Metadata = {
@@ -53,7 +58,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable} ${ibmPlexMono.variable}`}>
+    <html lang="en" className={`${oswald.variable} ${martel.variable} ${ibmPlexMono.variable} ${barlowSemiCondensed.variable}`}>
       <body>
         <Nav />
         <IdCard />

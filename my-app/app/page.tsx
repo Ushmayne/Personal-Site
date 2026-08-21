@@ -1,5 +1,7 @@
+'use client';
+
+import { useState } from 'react';
 import Image from 'next/image';
-import { Protractor, DraftingCompass, SetSquare } from './components/BlueprintTools';
 
 type Project = {
   kind: string;
@@ -39,7 +41,7 @@ const projects: Project[] = [
   {
     kind: 'PERSONAL PROJECT',
     title: 'CareLog',
-    desc: 'Family care coordination app — medications, appointments, visit notes, and shared tasks in one hub.',
+    desc: 'Family care coordination app: Tracks medications, appointments, visit notes, and shared tasks in one hub.',
     tags: ['Next.js', 'Supabase', 'TypeScript'],
     thumb: 'thumb-2',
     image: '/careLog.jpg',
@@ -48,7 +50,7 @@ const projects: Project[] = [
   {
     kind: 'TEAM TOOL',
     title: 'Task tracker',
-    desc: 'Team task management app with role-based permissions — assign, track, and complete work across multiple teams.',
+    desc: 'Team task management app with role-based permissions: assign, track, and complete work across multiple teams.',
     tags: ['Next.js', 'Supabase', 'TypeScript'],
     thumb: 'thumb-3',
     href: 'https://github.com/Ushmayne/Task-Tracker',
@@ -62,33 +64,95 @@ const projects: Project[] = [
     image: '/BotPhoto.jpg',
     href: 'https://github.com/Ushmayne/discordBot',
   },
+  {
+    kind: 'SIMULATION',
+    title: 'Autonomous Vehicle Simulation',
+    desc: 'Unity simulation focused on vehicle localization: the full autonomy stack from perception to navigation and path planning.',
+    tags: ['Unity', 'C#', 'Simulation'],
+    thumb: 'thumb-1',
+    image: '/auto.jpg',
+    href: 'https://github.com/Ushmayne/AutonomousVehicle',
+  },
+  {
+    kind: 'ALGORITHM VISUALIZER',
+    title: 'A* Pathfinding Visualizer',
+    desc: 'Interactive visualizer for the A* search algorithm: place walls and watch the algorithm navigate around them in real time.',
+    tags: ['Python', 'Pygame'],
+    thumb: 'thumb-2',
+    image: '/astarPath.jpg',
+    href: 'https://github.com/Ushmayne/A-star-Path-Finding-Visualizer-',
+  },
+  {
+    kind: 'PERSONAL PROJECT',
+    title: 'Poker Game',
+    desc: 'Two-player poker in Java where the AI opponent can hold, fold, or bluff based on hand strength and randomized probability.',
+    tags: ['Java'],
+    thumb: 'thumb-3',
+    image: '/poker.jpg',
+    href: 'https://github.com/Ushmayne/Poker',
+  },
+  {
+    kind: 'DESKTOP APP',
+    title: 'Weather App',
+    desc: 'Windows app in C# that fetches real-time weather data from an external API and displays current conditions.',
+    tags: ['C#', '.NET'],
+    thumb: 'thumb-4',
+    image: '/weatherApp.jpg',
+    href: 'https://github.com/Ushmayne/Weather-App',
+  },
+  {
+    kind: 'UTILITY',
+    title: 'File Compressor',
+    desc: 'Windows utility for compressing and decompressing files: supports drag-and-drop and batch operations.',
+    tags: ['C#', '.NET', 'Windows'],
+    thumb: 'thumb-1',
+    image: '/file_compressor.jpg',
+    href: 'https://github.com/Ushmayne/File-Compression-Utility',
+  },
+  {
+    kind: 'GRAPHICS',
+    title: 'Clock in OpenGL',
+    desc: 'Analog clock rendered entirely in OpenGL that reads system time and updates every second.',
+    tags: ['C++', 'OpenGL'],
+    thumb: 'thumb-2',
+    image: '/clock.jpg',
+    href: 'https://github.com/Ushmayne/ClockOpenGL',
+  },
+  {
+    kind: 'PERSONAL PROJECT',
+    title: 'Original Portfolio Website',
+    desc: 'My first personal portfolio: the starting point that eventually led to this one.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    thumb: 'thumb-3',
+    image: '/ogPort.jpg',
+    href: 'https://github.com/Ushmayne/portfolio-website',
+  },
 ];
 
+const PROJECTS_PAGE_SIZE = 4;
+
 export default function Home() {
+  const [projectPage, setProjectPage] = useState(0);
+  const totalProjectPages = Math.ceil(projects.length / PROJECTS_PAGE_SIZE);
+  const visibleProjects = projects.slice(
+    projectPage * PROJECTS_PAGE_SIZE,
+    projectPage * PROJECTS_PAGE_SIZE + PROJECTS_PAGE_SIZE
+  );
+
   return (
     <div className="-m-4 md:-m-6">
-      <div className="grid-bg" aria-hidden="true"></div>
+      <div className="bg-glow" aria-hidden="true"></div>
+      <div className="bg-grain" aria-hidden="true"></div>
 
       <div id="top">
         <section className="hero">
           <div className="wrap hero-grid">
             <div className="hero-left">
-              <p className="eyebrow annot">
-                <span className="fig-tag">FIG.01</span> — INDEX
-              </p>
-              <div className="dim-line annot">
-                <span className="dim-tick"></span>
-                <span className="dim-rule"></span>
-                <span className="dim-label">01 · PROFILE — SCALE 1:1</span>
-                <span className="dim-rule"></span>
-                <span className="dim-tick"></span>
-              </div>
               <h1 className="hero-title">
-                I design &amp; <em>build</em> things worth sharing.
+                I design &amp; <em>build</em>. Sometimes it even ships!
               </h1>
               <p className="hero-lead">
-                I&rsquo;m a software developer who&rsquo;s curious by nature — I break problems down and think a few
-                steps ahead, then build the thing properly so it&rsquo;s actually worth using.
+                Trying to break down problems and solve them without breaking prod.
               </p>
               <div className="hero-ctas">
                 <a href="#work" className="btn btn-primary">See the work</a>
@@ -109,21 +173,16 @@ export default function Home() {
                   <div className="spec-row"><dt>Stack</dt><dd>React · Node · Python</dd></div>
                 </dl>
               </div>
-              <Protractor className="bp-tool bp-tool-protractor annot" />
             </div>
           </div>
         </section>
 
         <section className="services" id="services">
           <div className="wrap">
-            <p className="eyebrow annot">
-              <span className="fig-tag">FIG.02</span> — SERVICES
-            </p>
             <h2 className="section-title">Two ways to work together</h2>
 
             <div className="services-grid">
               <article className="service-card">
-                <span className="dwg-label annot mono">DWG-02A</span>
                 <h3>For teams</h3>
                 <p className="service-kicker">Software development</p>
                 <ul className="plus-list">
@@ -135,7 +194,6 @@ export default function Home() {
               </article>
 
               <article className="service-card">
-                <span className="dwg-label annot mono">DWG-02B</span>
                 <h3>For you</h3>
                 <p className="service-kicker">I&rsquo;ll build your site</p>
                 <ul className="plus-list">
@@ -151,17 +209,14 @@ export default function Home() {
 
         <section className="work" id="work">
           <div className="wrap">
-            <p className="eyebrow annot">
-              <span className="fig-tag">FIG.03</span> — SELECTED WORK
-            </p>
             <h2 className="section-title">My projects</h2>
 
             <div className="work-grid">
-              {projects.map((project) => {
+              {visibleProjects.map((project) => {
                 const card = (
                   <>
                     <div className={`thumb ${project.thumb}`}>
-                      {project.image ? (
+                      {project.image && (
                         <Image
                           src={project.image}
                           alt={project.title}
@@ -169,8 +224,6 @@ export default function Home() {
                           sizes="(max-width: 900px) 100vw, 50vw"
                           className="thumb-img"
                         />
-                      ) : (
-                        <span className="frame-dashed annot" aria-hidden="true"></span>
                       )}
                     </div>
                     <p className="project-kind mono">{project.kind}</p>
@@ -201,14 +254,39 @@ export default function Home() {
                 );
               })}
             </div>
+
+            {totalProjectPages > 1 && (
+              <div className="work-nav">
+                <button
+                  type="button"
+                  className="work-arrow"
+                  aria-label="Previous projects"
+                  disabled={projectPage === 0}
+                  onClick={() => setProjectPage((p) => Math.max(0, p - 1))}
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M15 18l-6-6 6-6" />
+                  </svg>
+                </button>
+                <span className="work-nav-count mono">{projectPage + 1} / {totalProjectPages}</span>
+                <button
+                  type="button"
+                  className="work-arrow"
+                  aria-label="Next projects"
+                  disabled={projectPage === totalProjectPages - 1}
+                  onClick={() => setProjectPage((p) => Math.min(totalProjectPages - 1, p + 1))}
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M9 18l6-6-6-6" />
+                  </svg>
+                </button>
+              </div>
+            )}
           </div>
         </section>
 
         <section className="experience" id="experience">
           <div className="wrap">
-            <p className="eyebrow annot">
-              <span className="fig-tag">FIG.04</span> — EXPERIENCE
-            </p>
             <h2 className="section-title">Where I&rsquo;ve worked</h2>
 
             <div className="timeline">
@@ -229,24 +307,21 @@ export default function Home() {
         <section className="about" id="about">
           <div className="wrap about-grid">
             <div className="about-text">
-              <p className="eyebrow annot">
-                <span className="fig-tag">FIG.05</span> — ABOUT
-              </p>
-              <h2 className="section-title">The person behind the code</h2>
+              <h2 className="section-title">A little bit about me</h2>
               <p>
-                Outside of work I&rsquo;m usually at the gym, chasing a volleyball on the beach, or elbow-deep in a
-                JDM project car that doesn&rsquo;t really need more attention. I collect things I probably don&rsquo;t
-                need and still fire up a retro console more often than I&rsquo;d admit. Same curiosity that drives
-                the code — I just like taking things apart to understand how they work.
+                Outside of work I'm usually at the gym, playing football (soccer), or grinding ranked in League. 
+                I travel when I can (most recently a month around Japan); the rest of the time I collect random stuff from when I was a kid, mostly Beyblades and Bakugans.
+
               </p>
               <div className="hobby-chips">
                 <span className="chip">Gym &amp; lifting</span>
-                <span className="chip">Beach volleyball</span>
+                <span className="chip">Football</span>
+                <span className="chip">League of Legends</span>
                 <span className="chip">JDM cars</span>
-                <span className="chip">Retro gaming</span>
-                <span className="chip">Collecting</span>
+                <span className="chip">Beyblade</span>
+                <span className="chip">Travel</span>
+
               </div>
-              <DraftingCompass className="bp-tool bp-tool-compass annot" />
             </div>
             <div className="about-photo">
               <div className="photo-box">
@@ -257,11 +332,7 @@ export default function Home() {
         </section>
 
         <section className="contact" id="contact">
-          <SetSquare className="bp-tool bp-tool-square annot" />
           <div className="wrap contact-inner">
-            <p className="eyebrow annot">
-              <span className="fig-tag">FIG.06</span> — CONTACT
-            </p>
             <h2 className="section-title">Let&rsquo;s build something.</h2>
             <p className="contact-lead">Got a project, an idea, or just want to say hi? My inbox is open.</p>
             <a className="btn btn-primary" href="mailto:usman.nved@gmail.com">Say hello</a>
