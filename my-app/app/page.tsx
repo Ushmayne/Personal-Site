@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
+import HeroDiagram from './components/HeroDiagram';
+import ProjectsCarousel from './components/ProjectsCarousel';
 
-type Project = {
+export type Project = {
   kind: string;
   title: string;
   desc: string;
@@ -129,16 +130,7 @@ const projects: Project[] = [
   },
 ];
 
-const PROJECTS_PAGE_SIZE = 4;
-
 export default function Home() {
-  const [projectPage, setProjectPage] = useState(0);
-  const totalProjectPages = Math.ceil(projects.length / PROJECTS_PAGE_SIZE);
-  const visibleProjects = projects.slice(
-    projectPage * PROJECTS_PAGE_SIZE,
-    projectPage * PROJECTS_PAGE_SIZE + PROJECTS_PAGE_SIZE
-  );
-
   return (
     <div className="-m-4 md:-m-6">
       <div className="bg-glow" aria-hidden="true"></div>
@@ -161,18 +153,7 @@ export default function Home() {
             </div>
 
             <div className="hero-right">
-              <div className="spec-card">
-                <div className="spec-head">
-                  <span className="spec-head-label mono">DRAWING — U.N / PROFILE</span>
-                  <span className="status-dot" aria-hidden="true"></span>
-                </div>
-                <dl className="spec-rows">
-                  <div className="spec-row"><dt>Role</dt><dd>Software developer</dd></div>
-                  <div className="spec-row"><dt>Focus</dt><dd>Web · Games · Data</dd></div>
-                  <div className="spec-row"><dt>Status</dt><dd className="status-amber">Open to work</dd></div>
-                  <div className="spec-row"><dt>Stack</dt><dd>React · Node · Python</dd></div>
-                </dl>
-              </div>
+              <HeroDiagram />
             </div>
           </div>
         </section>
@@ -210,78 +191,7 @@ export default function Home() {
         <section className="work" id="work">
           <div className="wrap">
             <h2 className="section-title">My projects</h2>
-
-            <div className="work-grid">
-              {visibleProjects.map((project) => {
-                const card = (
-                  <>
-                    <div className={`thumb ${project.thumb}`}>
-                      {project.image && (
-                        <Image
-                          src={project.image}
-                          alt={project.title}
-                          fill
-                          sizes="(max-width: 900px) 100vw, 50vw"
-                          className="thumb-img"
-                        />
-                      )}
-                    </div>
-                    <p className="project-kind mono">{project.kind}</p>
-                    <h3>{project.title}</h3>
-                    <p className="project-desc">{project.desc}</p>
-                    <div className="chips">
-                      {project.tags.map((tag) => (
-                        <span className="chip" key={tag}>{tag}</span>
-                      ))}
-                    </div>
-                  </>
-                );
-
-                return project.href ? (
-                  <a
-                    key={project.title}
-                    className="project-card"
-                    href={project.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {card}
-                  </a>
-                ) : (
-                  <article key={project.title} className="project-card">
-                    {card}
-                  </article>
-                );
-              })}
-            </div>
-
-            {totalProjectPages > 1 && (
-              <div className="work-nav">
-                <button
-                  type="button"
-                  className="work-arrow"
-                  aria-label="Previous projects"
-                  disabled={projectPage === 0}
-                  onClick={() => setProjectPage((p) => Math.max(0, p - 1))}
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M15 18l-6-6 6-6" />
-                  </svg>
-                </button>
-                <span className="work-nav-count mono">{projectPage + 1} / {totalProjectPages}</span>
-                <button
-                  type="button"
-                  className="work-arrow"
-                  aria-label="Next projects"
-                  disabled={projectPage === totalProjectPages - 1}
-                  onClick={() => setProjectPage((p) => Math.min(totalProjectPages - 1, p + 1))}
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M9 18l6-6-6-6" />
-                  </svg>
-                </button>
-              </div>
-            )}
+            <ProjectsCarousel projects={projects} />
           </div>
         </section>
 
@@ -313,15 +223,7 @@ export default function Home() {
                 I travel when I can (most recently a month around Japan); the rest of the time I collect random stuff from when I was a kid, mostly Beyblades and Bakugans.
 
               </p>
-              <div className="hobby-chips">
-                <span className="chip">Gym &amp; lifting</span>
-                <span className="chip">Football</span>
-                <span className="chip">League of Legends</span>
-                <span className="chip">JDM cars</span>
-                <span className="chip">Beyblade</span>
-                <span className="chip">Travel</span>
-
-              </div>
+              
             </div>
             <div className="about-photo">
               <div className="photo-box">
@@ -344,33 +246,6 @@ export default function Home() {
           </div>
         </section>
       </div>
-
-      <footer className="titleblock">
-        <div className="wrap">
-          <div className="tb-grid">
-            <div className="tb-cell">
-              <span className="tb-label">Drawn by</span>
-              <span className="tb-value">Usman Naveed</span>
-            </div>
-            <div className="tb-cell">
-              <span className="tb-label">Title</span>
-              <span className="tb-value">Portfolio</span>
-            </div>
-            <div className="tb-cell">
-              <span className="tb-label">Rev</span>
-              <span className="tb-value">2026.1</span>
-            </div>
-            <div className="tb-cell">
-              <span className="tb-label">Scale</span>
-              <span className="tb-value">1:1</span>
-            </div>
-            <div className="tb-cell">
-              <span className="tb-label">Sheet</span>
-              <span className="tb-value">01/01</span>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

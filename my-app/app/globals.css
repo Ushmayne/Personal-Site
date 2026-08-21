@@ -302,58 +302,74 @@ em { font-style: italic; color: var(--accent); font-weight: 500; transition: col
 .hero-lead { color: var(--dim); font-size: 1.05rem; max-width: 46ch; margin-bottom: 32px; }
 .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
 
-.spec-card {
+.hero-diagram {
+  position: relative;
   border: 1px solid var(--line);
   border-radius: var(--r-md);
   background: var(--panel);
-  padding: 0;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
 }
-.spec-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 18px;
-  border-bottom: 1px dashed var(--line);
+.hero-diagram-svg { display: block; width: 100%; height: 100%; touch-action: none; }
+.hero-diagram-shape {
+  fill: color-mix(in srgb, var(--accent) 12%, transparent);
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 9;
+  stroke-linejoin: round;
+  cursor: grab;
+  touch-action: none;
+  transition: fill .2s ease;
 }
-.spec-head-label {
-  font-family: var(--font-ibm-plex-mono), monospace;
-  font-size: .68rem;
+.hero-diagram-shape:hover { fill: color-mix(in srgb, var(--accent) 20%, transparent); }
+.hero-diagram-shape:active { cursor: grabbing; }
+.hero-diagram-handle {
+  fill: var(--panel);
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  cursor: pointer;
+  touch-action: none;
+  transition: fill .2s ease, r .15s ease;
+}
+.hero-diagram-handle:hover { fill: var(--accent); }
+.hero-diagram-corner-handle {
+  fill: var(--panel);
+  stroke: var(--azure);
+  stroke-width: 1.5;
+  cursor: nwse-resize;
+  touch-action: none;
+  transition: fill .2s ease;
+}
+.hero-diagram-corner-handle:hover { fill: var(--azure); }
+.hero-diagram-reset {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-size: .62rem;
   letter-spacing: .08em;
   color: var(--dim-2);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 3px 8px;
+  cursor: pointer;
+  transition: color .2s ease, border-color .2s ease;
 }
-.status-dot {
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent), 0 0 10px var(--accent);
-  animation: bp-pulse 2.4s ease-in-out infinite;
-  transition: background .5s ease;
-}
-@keyframes bp-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: .45; }
-}
-.spec-rows { margin: 0; padding: 6px 18px 18px; }
-.spec-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 11px 0;
-  border-bottom: 1px solid var(--line-soft);
-  font-size: .92rem;
-}
-.spec-row:last-child { border-bottom: none; }
-.spec-row dt {
-  font-family: var(--font-ibm-plex-mono), monospace;
-  font-size: .72rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
+.hero-diagram-reset:hover { color: var(--paper); border-color: var(--accent); }
+.hero-diagram-reset:active { transform: translateX(-50%) translateY(1px); }
+.hero-diagram-hint {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  z-index: 1;
+  font-size: .64rem;
+  letter-spacing: .1em;
   color: var(--dim-2);
-  margin: 0;
+  pointer-events: none;
+  animation: bp-pulse 2.4s ease-in-out infinite;
 }
-.spec-row dd { margin: 0; color: var(--paper); text-align: right; }
-.status-amber { color: var(--spark); font-weight: 600; }
 
 /* services */
 .services { padding: 70px 0; border-top: 1px solid var(--line-soft); }
@@ -393,13 +409,41 @@ em { font-style: italic; color: var(--accent); font-weight: 500; transition: col
 
 /* work */
 .work { padding: 70px 0; border-top: 1px solid var(--line-soft); }
-.work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.work-carousel { margin-top: 8px; }
+.work-carousel-viewport {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+.work-carousel-track {
+  display: flex;
+  width: max-content;
+  animation-name: work-marquee;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.work-carousel-viewport:hover .work-carousel-track,
+.work-carousel-viewport:focus-within .work-carousel-track {
+  animation-play-state: paused;
+}
+@keyframes work-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.work-slide { flex: 0 0 300px; box-sizing: border-box; padding: 0 14px; }
+
+.work-carousel-static {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding-bottom: 6px;
+}
+.work-carousel-static .work-slide { scroll-snap-align: start; }
 .work-nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  margin-top: 32px;
+  gap: 14px;
+  margin-top: 24px;
 }
 .work-arrow {
   display: flex;
@@ -410,16 +454,17 @@ em { font-style: italic; color: var(--accent); font-weight: 500; transition: col
   border: 1px solid var(--line);
   border-radius: 999px;
   background: none;
-  color: var(--accent);
+  color: var(--dim-2);
   cursor: pointer;
   transition: border-color .2s ease, color .2s ease;
 }
 .work-arrow svg { width: 18px; height: 18px; }
-.work-arrow:hover:not(:disabled) { border-color: var(--accent); }
-.work-arrow:disabled { opacity: .3; cursor: not-allowed; }
-.work-nav-count { font-size: .78rem; letter-spacing: .06em; color: var(--dim-2); }
+.work-arrow:hover { border-color: var(--accent); color: var(--accent); }
+.work-arrow.active { border-color: var(--accent); color: var(--accent); }
 .project-card {
   display: block;
+  height: 100%;
+  box-sizing: border-box;
   border: 1px solid var(--line);
   border-radius: var(--r-md);
   background: var(--panel);
@@ -560,7 +605,7 @@ em { font-style: italic; color: var(--accent); font-weight: 500; transition: col
 
 /* responsive */
 @media (max-width: 900px) {
-  .services-grid, .work-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 720px) {
@@ -839,7 +884,7 @@ em { font-style: italic; color: var(--accent); font-weight: 500; transition: col
   background: var(--panel-2);
   margin-bottom: 13px;
 }
-.idcard-photo img { object-fit: cover; }
+.idcard-photo img { object-fit: cover; object-position: 67% 50%; }
 .idcard-name {
   font-family: var(--font-oswald), sans-serif;
   font-size: 1.16rem;
@@ -917,7 +962,7 @@ em { font-style: italic; color: var(--accent); font-weight: 500; transition: col
     animation-iteration-count: 1 !important;
     transition-duration: .001ms !important;
   }
-  .idcard-sway, .idcard-hint {
+  .idcard-sway, .idcard-hint, .hero-diagram-hint {
     animation: none !important;
   }
   .idcard-retract, .idcard-strap {

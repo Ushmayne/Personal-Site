@@ -36,20 +36,20 @@ export const metadata: Metadata = {
   },
   description:
     "Usman Naveed — software developer. I design and build web apps, tools, and personal sites.",
-  keywords: ["Usman Naveed", "software developer", "portfolio", "Windsor Ontario", "web development", "game development"],
+  keywords: ["Usman Naveed", "software developer", "portfolio", "Ontario", "web development", "game development"],
   authors: [{ name: "Usman Naveed" }],
   openGraph: {
     type: "website",
     title: "Usman Naveed — Software Developer",
     description:
-      "Software developer based in Windsor, Ontario. Check out my projects, resume, and hobbies.",
+      "Software developer based Ontario. Check out my projects, resume, and hobbies.",
     siteName: "Usman Naveed",
   },
   twitter: {
     card: "summary",
     title: "Usman Naveed — Software Developer",
     description:
-      "Software developer based in Windsor, Ontario. Check out my projects, resume, and hobbies.",
+      "Software developer based Ontario. Check out my projects, resume, and hobbies.",
   },
   icons: {
     icon: "/icon.png",

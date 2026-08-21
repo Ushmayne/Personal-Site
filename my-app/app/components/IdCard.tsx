@@ -207,7 +207,7 @@ export default function IdCard() {
                   <div className="idcard-hole" />
                   <div className="idcard-inner">
                     <div className="idcard-head">
-                      <span className="idcard-tag mono">FIG.00 — STAFF ID</span>
+                      <span className="idcard-tag mono">STAFF ID</span>
                     </div>
                     <div className="idcard-photo">
                       <Image src="/id.jpg" alt="Usman Naveed" fill sizes="170px" />
