@@ -297,7 +297,6 @@ em { font-style: italic; color: var(--accent); font-weight: 500; transition: col
   font-size: clamp(2.2rem, 4.6vw, 3.4rem);
   line-height: 1.12;
   margin-bottom: 22px;
-  max-width: 14ch;
 }
 .hero-lead { color: var(--dim); font-size: 1.05rem; max-width: 46ch; margin-bottom: 32px; }
 .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
@@ -361,8 +360,9 @@ em { font-style: italic; color: var(--accent); font-weight: 500; transition: col
 .hero-diagram-reset:active { transform: translateX(-50%) translateY(1px); }
 .hero-diagram-hint {
   position: absolute;
-  top: 12px;
-  left: 14px;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1;
   font-size: .64rem;
   letter-spacing: .1em;
@@ -376,12 +376,16 @@ em { font-style: italic; color: var(--accent); font-weight: 500; transition: col
 .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 .service-card {
   position: relative;
+  max-width: 620px;
   border: 1px solid var(--line);
   border-radius: var(--r-md);
   background: var(--panel);
   padding: 30px 28px 28px;
+  transition: transform .25s ease, border-color .25s ease;
 }
+.service-card:hover { transform: translateY(-4px); border-color: var(--accent); }
 .service-card h3 { font-size: 1.4rem; margin-bottom: 6px; }
+.service-plain { max-width: 620px; }
 .service-kicker {
   font-family: var(--font-ibm-plex-mono), monospace;
   font-size: .72rem;
@@ -417,17 +421,7 @@ em { font-style: italic; color: var(--accent); font-weight: 500; transition: col
 .work-carousel-track {
   display: flex;
   width: max-content;
-  animation-name: work-marquee;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-}
-.work-carousel-viewport:hover .work-carousel-track,
-.work-carousel-viewport:focus-within .work-carousel-track {
-  animation-play-state: paused;
-}
-@keyframes work-marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  will-change: transform;
 }
 .work-slide { flex: 0 0 300px; box-sizing: border-box; padding: 0 14px; }
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import type { Project } from '../page';
 
@@ -43,10 +43,65 @@ function ProjectCard({ project }: { project: Project }) {
 export default function ProjectsCarousel({ projects }: { projects: Project[] }) {
   const [reducedMotion, setReducedMotion] = useState(false);
   const [direction, setDirection] = useState<'normal' | 'reverse'>('normal');
+  const trackRef = useRef<HTMLDivElement>(null);
+  const directionRef = useRef(direction);
+  const hoveredRef = useRef(false);
+  const offsetRef = useRef(0);
+  const setWidthRef = useRef(0);
 
   useEffect(() => {
     setReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   }, []);
+
+  useEffect(() => {
+    directionRef.current = direction;
+  }, [direction]);
+
+  useEffect(() => {
+    if (reducedMotion) return;
+    const track = trackRef.current;
+    if (!track) return;
+
+    const measure = () => {
+      setWidthRef.current = track.scrollWidth / 2;
+    };
+    measure();
+
+    const resizeObserver = new ResizeObserver(measure);
+    resizeObserver.observe(track);
+
+    let lastTime: number | null = null;
+    let rafId: number;
+
+    const step = (time: number) => {
+      if (lastTime === null) lastTime = time;
+      const dt = (time - lastTime) / 1000;
+      lastTime = time;
+
+      const setWidth = setWidthRef.current;
+      if (setWidth > 0 && !hoveredRef.current) {
+        const pxPerSecond = setWidth / (projects.length * SECONDS_PER_CARD);
+        const sign = directionRef.current === 'normal' ? -1 : 1;
+        let next = offsetRef.current + sign * pxPerSecond * dt;
+
+        if (next <= -setWidth) next += setWidth;
+        if (next > 0) next -= setWidth;
+
+        offsetRef.current = next;
+        track.style.transform = `translateX(${next}px)`;
+      }
+
+      rafId = requestAnimationFrame(step);
+    };
+
+    rafId = requestAnimationFrame(step);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      resizeObserver.disconnect();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reducedMotion, projects.length]);
 
   if (reducedMotion) {
     return (
@@ -60,15 +115,16 @@ export default function ProjectsCarousel({ projects }: { projects: Project[] }) 
     );
   }
 
-  const duration = projects.length * SECONDS_PER_CARD;
-
   return (
     <div className="work-carousel">
-      <div className="work-carousel-viewport">
-        <div
-          className="work-carousel-track"
-          style={{ animationDuration: `${duration}s`, animationDirection: direction }}
-        >
+      <div
+        className="work-carousel-viewport"
+        onMouseEnter={() => { hoveredRef.current = true; }}
+        onMouseLeave={() => { hoveredRef.current = false; }}
+        onFocus={() => { hoveredRef.current = true; }}
+        onBlur={() => { hoveredRef.current = false; }}
+      >
+        <div className="work-carousel-track" ref={trackRef}>
           {[...projects, ...projects].map((project, i) => (
             <div className="work-slide" key={i}>
               <ProjectCard project={project} />

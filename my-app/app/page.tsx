@@ -141,14 +141,16 @@ export default function Home() {
           <div className="wrap hero-grid">
             <div className="hero-left">
               <h1 className="hero-title">
-                I design &amp; <em>build</em>. Sometimes it even ships!
+                I design &amp; <em>build</em>
+                <br />
+                to solve real problems.
               </h1>
               <p className="hero-lead">
                 Trying to break down problems and solve them without breaking prod.
               </p>
               <div className="hero-ctas">
                 <a href="#work" className="btn btn-primary">See the work</a>
-                <a href="#contact" className="btn btn-ghost">Build a site with me</a>
+                <a href="#contact" className="btn btn-ghost">Start a project with me</a>
               </div>
             </div>
 
@@ -160,30 +162,17 @@ export default function Home() {
 
         <section className="services" id="services">
           <div className="wrap">
-            <h2 className="section-title">Two ways to work together</h2>
+            <h2 className="section-title">What I build</h2>
 
-            <div className="services-grid">
-              <article className="service-card">
-                <h3>For teams</h3>
-                <p className="service-kicker">Software development</p>
-                <ul className="plus-list">
-                  <li><span className="plus">+</span> Full-stack web apps &amp; internal tools</li>
-                  <li><span className="plus">+</span> Data, automation, problem-solving</li>
-                  <li><span className="plus">+</span> Clean, documented, maintainable code</li>
-                </ul>
-                <a href="#work" className="see-link">SEE PROJECTS →</a>
-              </article>
-
-              <article className="service-card">
-                <h3>For you</h3>
-                <p className="service-kicker">I&rsquo;ll build your site</p>
-                <ul className="plus-list">
-                  <li><span className="plus">+</span> Portfolios &amp; personal brands</li>
-                  <li><span className="plus">+</span> Design + build, start to finish</li>
-                  <li><span className="plus">+</span> Yours to own — no lock-in</li>
-                </ul>
-                <a href="#work" className="see-link">SEE PROJECTS →</a>
-              </article>
+            <div className="service-plain">
+              <p className="service-kicker">Sites, automations, whatever you need</p>
+              <ul className="plus-list">
+                <li><span className="plus">+</span> Websites &amp; portfolios, designed and built end to end</li>
+                <li><span className="plus">+</span> Automations that cut out repetitive, manual work</li>
+                <li><span className="plus">+</span> Full stack apps &amp; internal tools for teams</li>
+                <li><span className="plus">+</span> Something else entirely. If it&rsquo;s software, I can figure it out</li>
+              </ul>
+              <a href="#contact" className="see-link">START A PROJECT →</a>
             </div>
           </div>
         </section>
