@@ -22,8 +22,8 @@ type ExperienceItem = {
 };
 
 const experience: ExperienceItem[] = [
-  { title: 'Freelance Web Developer', company: 'Self-employed', duration: 'Jul 2026 – Present' },
-  { title: 'Production and Maintenance Supervisor', company: 'Stellantis', duration: 'Jan 2025 – Present' },
+  { title: 'Web Developer', company: 'Self-employed', duration: 'Jul 2026 – Present' },
+  { title: 'Production and Maintenance Supervisor', company: 'Stellantis', duration: 'Jan 2025 – Jul 2026' },
   { title: 'Tech Teacher', company: 'Lakeview Montessori School', duration: 'Oct 2023 – Dec 2024' },
   { title: 'CEO', company: 'Huda Nasir Al-Fadak', duration: 'Feb 2022 – Feb 2024' },
   { title: 'Software Developer', company: 'Canadian Tire Corporation', duration: 'May 2019 – Dec 2019' },
