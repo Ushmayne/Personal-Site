@@ -2,7 +2,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 
@@ -176,11 +176,14 @@ const devTools = [
 
 function CollapsibleSection({ title, children, defaultOpen = false }: { title: string; children: React.ReactNode; defaultOpen?: boolean }) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
+  const contentId = useId();
 
   return (
     <div className="mb-4 border border-[var(--line)] rounded-lg overflow-hidden bg-[var(--panel)]">
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-expanded={isOpen}
+        aria-controls={contentId}
         className="w-full flex items-center justify-between p-2.5 sm:p-4 text-[var(--paper)] font-semibold transition-colors hover:bg-black/20 text-xs sm:text-sm md:text-base"
       >
         <span className="text-left">{title}</span>
@@ -189,7 +192,7 @@ function CollapsibleSection({ title, children, defaultOpen = false }: { title: s
           className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
-      <div className={`overflow-hidden transition-all duration-900 ease-in-out ${isOpen ? 'max-h-120' : 'max-h-0'}`}>
+      <div id={contentId} className={`overflow-hidden transition-all duration-900 ease-in-out ${isOpen ? 'max-h-120' : 'max-h-0'}`}>
         <div className="p-2.5 sm:p-4 bg-[var(--panel)] border-t border-[var(--line)] text-[var(--paper)] text-xs sm:text-sm md:text-base">
           {children}
         </div>
@@ -200,7 +203,7 @@ function CollapsibleSection({ title, children, defaultOpen = false }: { title: s
 
 export default function Resume() {
   return (
-    <main className="px-2 sm:px-4 md:px-6 lg:px-12 py-4 sm:py-6 md:py-10 min-h-screen md:ml-6">
+    <div className="wrap py-4 sm:py-6 md:py-10 min-h-screen">
       <div className="mb-8 md:mb-12">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-6 sm:mb-8">
           <h1 className="text-xl sm:text-3xl md:text-4xl">Resume</h1>
@@ -319,6 +322,6 @@ export default function Resume() {
           ))}
         </section>
       </div>
-    </main>
+    </div>
   );
 }

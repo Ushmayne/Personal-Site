@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { PointerEvent as ReactPointerEvent } from 'react';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 const ROPE_LENGTH = 208; // px rest length — keep in sync with the CSS default offsets below
 const GRAVITY = 2600; // controls swing speed
@@ -13,6 +14,7 @@ const STRETCH_STIFFNESS = 90; // spring constant pulling the stretch back to 0
 const STRETCH_DAMPING = 6.5;
 
 export default function IdCard() {
+  const pathname = usePathname();
   const pivotRef = useRef<HTMLDivElement>(null);
   const swingRef = useRef<HTMLDivElement>(null);
   const strapRef = useRef<HTMLDivElement>(null);
@@ -185,6 +187,10 @@ export default function IdCard() {
       // pointer already released
     }
   }
+
+  // Homepage-only easter egg — off the hero, other pages don't have the
+  // clear space it needs and it ends up sitting on top of real content.
+  if (pathname !== '/') return null;
 
   return (
     <div className="idcard-layer" aria-hidden="true">

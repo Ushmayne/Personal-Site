@@ -62,7 +62,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <Nav />
         <IdCard />
-        <main className="p-4 md:p-6 text-cabin-text">{children}</main>
+        <main className="p-4 md:p-6">{children}</main>
       </body>
     </html>
   );
