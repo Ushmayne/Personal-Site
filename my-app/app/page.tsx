@@ -259,6 +259,12 @@ export default function Home() {
                 </div>
               ))}
             </div>
+
+            <div className="experience-cta reveal">
+              <a href="/UsmanNaveedResume.pdf" download="UsmanNaveedResume.pdf" className="btn btn-ghost">
+                Download r&eacute;sum&eacute;
+              </a>
+            </div>
           </div>
         </section>
 
@@ -269,9 +275,7 @@ export default function Home() {
               <p>
                 Outside of work I'm usually at the gym, playing football (soccer), or grinding ranked in League.
                 I travel when I can (most recently a month around Japan); the rest of the time I collect random stuff from when I was a kid, mostly Beyblades and Bakugans.
-
               </p>
-
             </div>
             <div className="about-photo reveal-right">
               <div className="photo-box">

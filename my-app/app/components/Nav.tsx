@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const NAV_LINKS = [
   { label: 'Services', href: '/#services' },
@@ -18,6 +19,9 @@ export default function Nav() {
     <header className="nav">
       <div className="nav-inner">
         <Link href="/#top" className="brand">
+          <span className="mono-box" aria-hidden="true">
+            <Image src="/icon.png" alt="" width={34} height={34} />
+          </span>
           <span className="brand-text">
             <span className="brand-name">Usman Naveed</span>
             <span className="brand-sub">SOFTWARE DEVELOPER</span>

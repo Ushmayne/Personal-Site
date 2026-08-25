@@ -26,65 +26,10 @@
 }
 
 
-nav.sidebar {
-  background: linear-gradient(to bottom, #020617, #030712);
-  animation: titleColorCycle 4s infinite ease-in-out;
-}
-
-@keyframes titleColorCycle {
-  0%   { color: #9ca3af; border-color: #4a6a80; box-shadow: inset 0 -6px 0 #4a6a80, inset 0 1px 0 #2a2a2a; }
-  40%  { color: #e2e8f0; border-color: #7ba3c4; box-shadow: inset 0 -6px 0 #7ba3c4, inset 0 1px 0 #2a2a2a; }
-  60%  { color: #e2e8f0; border-color: #7ba3c4; box-shadow: inset 0 -6px 0 #7ba3c4, inset 0 1px 0 #2a2a2a; }
-  100% { color: #9ca3af; border-color: #4a6a80; box-shadow: inset 0 -6px 0 #4a6a80, inset 0 1px 0 #2a2a2a; }
-}
-
-.sidebar a,
-.sidebar a:visited {
-  color: #5b7c99;
-  text-decoration: none !important;
-}
-
-.sidebar a:hover {
-  color: #60a5fa ;
-  background: none !important;
-}
-
-.nav-key-active {
-  animation: none !important;
-  color: #c9a66b !important;
-  border-color: #c9a66b !important;
-  background: #1e1a0e !important;
-  box-shadow:
-    inset 0 -6px 0 #c9a66b,
-    inset 0 1px 0 #2a2a2a !important;
-}
-
-.nav-key{
-  animation: titleColorCycle 4s infinite ease-in-out;
-  display: flex;
-  box-sizing: border-box;
-  align-items: center;
-  width: calc(100% + 10px);
-  padding: 18px 14px;
-  border-radius: 14px;
-
-  background: #1a1a1a;
-  border: 1px solid #5b7c99;
-  color: #fff;
-  text-decoration: none;
-  box-shadow:
-    inset 0 -6px 0 #5b7c99,
-    inset 0 1px 0 #2a2a2a;
-}
-
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   body {
     overflow-x: hidden;
-  }
-
-  .nav-key {
-    padding: 16px 12px;
   }
 
   main {
@@ -135,7 +80,7 @@ Text muted:                        #9ca3af   (mist gray)
   --spark-soft: #ffd199;
   --paper: #e7eef8;
   --dim: #8ba0ba;
-  --dim-2: #61748c;
+  --dim-2: #7e93ad;
   --accent: var(--spark);
   --accent-soft: var(--spark-soft);
   --on-accent: #0b1320;
@@ -162,6 +107,22 @@ em { font-style: italic; color: var(--accent); font-weight: 500; transition: col
 .mono { font-family: var(--font-ibm-plex-mono), monospace; }
 
 ::selection { background: var(--accent); color: var(--on-accent); }
+
+/* keyboard focus — mirrors the accent-border hover language used across
+   .nav-links a / .btn / .work-arrow / .project-card so keyboard users get
+   the same signal mouse users get on hover, instead of a bare UA outline. */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
+.project-card:focus-visible,
+.work-arrow:focus-visible,
+.hamburger:focus-visible {
+  outline-offset: 2px;
+}
 
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
 
@@ -537,6 +498,7 @@ em { font-style: italic; color: var(--accent); font-weight: 500; transition: col
   }
 }
 .timeline-item:last-child { padding-bottom: 0; }
+.experience-cta { display: flex; justify-content: center; margin-top: 40px; }
 .timeline-left { padding-right: 40px; text-align: right; }
 .timeline-right { left: 50%; padding-left: 40px; text-align: left; }
 .timeline-dot {

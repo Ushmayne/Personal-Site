@@ -43,11 +43,17 @@ function ProjectCard({ project }: { project: Project }) {
 export default function ProjectsCarousel({ projects }: { projects: Project[] }) {
   const [reducedMotion, setReducedMotion] = useState(false);
   const [direction, setDirection] = useState<'normal' | 'reverse'>('normal');
+  const [paused, setPaused] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
   const directionRef = useRef(direction);
   const hoveredRef = useRef(false);
+  const pausedRef = useRef(false);
   const offsetRef = useRef(0);
   const setWidthRef = useRef(0);
+
+  useEffect(() => {
+    pausedRef.current = paused;
+  }, [paused]);
 
   useEffect(() => {
     setReducedMotion(window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -79,7 +85,7 @@ export default function ProjectsCarousel({ projects }: { projects: Project[] }) 
       lastTime = time;
 
       const setWidth = setWidthRef.current;
-      if (setWidth > 0 && !hoveredRef.current) {
+      if (setWidth > 0 && !hoveredRef.current && !pausedRef.current) {
         const pxPerSecond = setWidth / (projects.length * SECONDS_PER_CARD);
         const sign = directionRef.current === 'normal' ? -1 : 1;
         let next = offsetRef.current + sign * pxPerSecond * dt;
@@ -144,6 +150,23 @@ export default function ProjectsCarousel({ projects }: { projects: Project[] }) 
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M15 18l-6-6 6-6" />
           </svg>
+        </button>
+        <button
+          type="button"
+          className={`work-arrow${paused ? ' active' : ''}`}
+          aria-label={paused ? 'Resume carousel' : 'Pause carousel'}
+          aria-pressed={paused}
+          onClick={() => setPaused((p) => !p)}
+        >
+          {paused ? (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M8 5l12 7-12 7V5z" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M8 5v14M16 5v14" />
+            </svg>
+          )}
         </button>
         <button
           type="button"
