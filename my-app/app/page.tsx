@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import HeroDiagram from './components/HeroDiagram';
 import ProjectsCarousel from './components/ProjectsCarousel';
@@ -54,6 +55,7 @@ const projects: Project[] = [
     desc: 'Team task management app with role-based permissions: assign, track, and complete work across multiple teams.',
     tags: ['Next.js', 'Supabase', 'TypeScript'],
     thumb: 'thumb-3',
+    image: '/taskTracker.png',
     href: 'https://github.com/Ushmayne/Task-Tracker',
   },
   {
@@ -131,15 +133,37 @@ const projects: Project[] = [
 ];
 
 export default function Home() {
+  const pageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const items = pageRef.current?.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .timeline-item');
+    if (!items || items.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -10% 0px' }
+    );
+
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="-m-4 md:-m-6">
+    <div className="-m-4 md:-m-6" ref={pageRef}>
       <div className="bg-glow" aria-hidden="true"></div>
       <div className="bg-grain" aria-hidden="true"></div>
 
       <div id="top">
         <section className="hero">
           <div className="wrap hero-grid">
-            <div className="hero-left">
+            <div className="hero-left reveal">
               <h1 className="hero-title">
                 I design &amp; <em>build</em>
                 <br />
@@ -154,7 +178,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="hero-right">
+            <div className="hero-right reveal-right" style={{ transitionDelay: '0.15s' }}>
               <HeroDiagram />
             </div>
           </div>
@@ -162,37 +186,72 @@ export default function Home() {
 
         <section className="services" id="services">
           <div className="wrap">
-            <h2 className="section-title">What I build</h2>
+            <h2 className="section-title reveal">What I build</h2>
 
-            <div className="service-plain">
-              <p className="service-kicker">Sites, automations, whatever you need</p>
-              <ul className="plus-list">
-                <li><span className="plus">+</span> Websites &amp; portfolios, designed and built end to end</li>
-                <li><span className="plus">+</span> Automations that cut out repetitive, manual work</li>
-                <li><span className="plus">+</span> Full stack apps &amp; internal tools for teams</li>
-                <li><span className="plus">+</span> Something else entirely. If it&rsquo;s software, I can figure it out</li>
-              </ul>
-              <a href="#contact" className="see-link">START A PROJECT →</a>
+            <div className="build-grid">
+              <div className="build-square reveal-scale" style={{ transitionDelay: '0s' }}>
+                <video
+                  src="/videos/website-demo.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  aria-label="Demo of a website being designed and built"
+                />
+              </div>
+              <div className="build-square reveal-scale" style={{ transitionDelay: '0.08s' }}>
+                <video
+                  src="/videos/automation-square.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  aria-label="Demo of a manual, repetitive workflow being replaced by an automated one"
+                />
+              </div>
+              <div className="build-square reveal-scale" style={{ transitionDelay: '0.16s' }}>
+                <video
+                  src="/videos/fullstack-demo.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  aria-label="Demo of a full stack internal team dashboard"
+                />
+              </div>
+              <div className="build-square reveal-scale" style={{ transitionDelay: '0.24s' }}>
+                <video
+                  src="/videos/anything-demo.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  aria-label="Demo of code being written to solve any kind of software problem"
+                />
+              </div>
             </div>
           </div>
         </section>
 
         <section className="work" id="work">
           <div className="wrap">
-            <h2 className="section-title">My projects</h2>
-            <ProjectsCarousel projects={projects} />
+            <h2 className="section-title reveal">My projects</h2>
+            <div className="reveal">
+              <ProjectsCarousel projects={projects} />
+            </div>
           </div>
         </section>
 
         <section className="experience" id="experience">
           <div className="wrap">
-            <h2 className="section-title">Where I&rsquo;ve worked</h2>
+            <h2 className="section-title reveal">Where I&rsquo;ve worked</h2>
 
             <div className="timeline">
               {experience.map((job, index) => (
                 <div
                   className={`timeline-item ${index % 2 === 0 ? 'timeline-left' : 'timeline-right'}`}
                   key={`${job.title}-${job.company}`}
+                  style={{ transitionDelay: `${index * 0.08}s` }}
                 >
                   <span className="timeline-dot" aria-hidden="true"></span>
                   <h3 className="timeline-role">{job.title}</h3>
@@ -205,16 +264,16 @@ export default function Home() {
 
         <section className="about" id="about">
           <div className="wrap about-grid">
-            <div className="about-text">
+            <div className="about-text reveal-left">
               <h2 className="section-title">A little bit about me</h2>
               <p>
-                Outside of work I'm usually at the gym, playing football (soccer), or grinding ranked in League. 
+                Outside of work I'm usually at the gym, playing football (soccer), or grinding ranked in League.
                 I travel when I can (most recently a month around Japan); the rest of the time I collect random stuff from when I was a kid, mostly Beyblades and Bakugans.
 
               </p>
-              
+
             </div>
-            <div className="about-photo">
+            <div className="about-photo reveal-right">
               <div className="photo-box">
                 <Image src="/usman.JPG" alt="Usman Naveed" fill sizes="(max-width: 720px) 320px, 400px" />
               </div>
@@ -223,7 +282,7 @@ export default function Home() {
         </section>
 
         <section className="contact" id="contact">
-          <div className="wrap contact-inner">
+          <div className="wrap contact-inner reveal">
             <h2 className="section-title">Let&rsquo;s build something.</h2>
             <p className="contact-lead">Got a project, an idea, or just want to say hi? My inbox is open.</p>
             <a className="btn btn-primary" href="mailto:usman.nved@gmail.com">Say hello</a>

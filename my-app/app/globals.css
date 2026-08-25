@@ -373,42 +373,25 @@ em { font-style: italic; color: var(--accent); font-weight: 500; transition: col
 
 /* services */
 .services { padding: 70px 0; border-top: 1px solid var(--line-soft); }
-.services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-.service-card {
+.build-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.build-square {
   position: relative;
-  max-width: 620px;
+  aspect-ratio: 8 / 5;
   border: 1px solid var(--line);
   border-radius: var(--r-md);
   background: var(--panel);
-  padding: 30px 28px 28px;
-  transition: transform .25s ease, border-color .25s ease;
+  overflow: hidden;
+  transition: border-color .25s ease;
 }
-.service-card:hover { transform: translateY(-4px); border-color: var(--accent); }
-.service-card h3 { font-size: 1.4rem; margin-bottom: 6px; }
-.service-plain { max-width: 620px; }
-.service-kicker {
-  font-family: var(--font-ibm-plex-mono), monospace;
-  font-size: .72rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 20px;
-  transition: color .5s ease;
+.build-square:hover { border-color: var(--accent); }
+.build-square video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-.plus-list { list-style: none; margin: 0 0 22px; padding: 0; display: flex; flex-direction: column; gap: 12px; }
-.plus-list li { display: flex; gap: 10px; color: var(--dim); font-size: .94rem; }
-.plus { font-family: var(--font-ibm-plex-mono), monospace; color: var(--accent); flex: none; transition: color .5s ease; }
-.see-link {
-  font-family: var(--font-ibm-plex-mono), monospace;
-  font-size: .76rem;
-  letter-spacing: .05em;
-  color: var(--paper);
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 2px;
-  transition: color .2s ease, border-color .2s ease;
-}
-.see-link:hover { color: var(--accent); border-color: var(--accent); }
-
 .contact { position: relative; }
 
 /* work */
@@ -521,6 +504,37 @@ em { font-style: italic; color: var(--accent); font-weight: 500; transition: col
   width: 50%;
   box-sizing: border-box;
   padding-bottom: 40px;
+  opacity: 0;
+  transition: opacity .6s ease, transform .6s ease;
+}
+.timeline-left { transform: translateX(-24px); }
+.timeline-right { transform: translateX(24px); }
+.timeline-item.is-visible { opacity: 1; transform: translateX(0); }
+
+/* generic scroll reveal — elements slide/fade in from off-screen the first
+   time they cross into the viewport. One directional variant per element;
+   .is-visible is added by the IntersectionObserver in page.tsx. */
+.reveal, .reveal-left, .reveal-right, .reveal-scale {
+  transition: opacity .7s ease, transform .7s cubic-bezier(.22, 1, .36, 1);
+}
+.reveal { opacity: 0; transform: translateY(56px); }
+.reveal-left { opacity: 0; transform: translateX(-64px); }
+.reveal-right { opacity: 0; transform: translateX(64px); }
+.reveal-scale { opacity: 0; transform: translateY(28px) scale(.94); }
+
+.reveal.is-visible,
+.reveal-left.is-visible,
+.reveal-right.is-visible,
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-item,
+  .reveal, .reveal-left, .reveal-right, .reveal-scale {
+    opacity: 1; transform: none; transition: none;
+  }
 }
 .timeline-item:last-child { padding-bottom: 0; }
 .timeline-left { padding-right: 40px; text-align: right; }
@@ -598,8 +612,8 @@ em { font-style: italic; color: var(--accent); font-weight: 500; transition: col
 .tb-value { font-family: var(--font-ibm-plex-mono), monospace; font-size: .82rem; color: var(--paper); }
 
 /* responsive */
-@media (max-width: 900px) {
-  .services-grid { grid-template-columns: 1fr; }
+@media (max-width: 640px) {
+  .build-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 720px) {
