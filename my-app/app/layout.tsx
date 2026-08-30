@@ -30,6 +30,7 @@ const barlowSemiCondensed = Barlow_Semi_Condensed({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://usmannaveed.ca"),
   title: {
     default: "Usman Naveed — Software Developer",
     template: "%s | Usman Naveed",
@@ -38,28 +39,63 @@ export const metadata: Metadata = {
     "Usman Naveed — software developer. I design and build web apps, tools, and personal sites.",
   keywords: ["Usman Naveed", "software developer", "portfolio", "Ontario", "web development", "game development"],
   authors: [{ name: "Usman Naveed" }],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
+    url: "/",
     title: "Usman Naveed — Software Developer",
     description:
       "Software developer based Ontario. Check out my projects, resume, and hobbies.",
     siteName: "Usman Naveed",
+    images: [
+      {
+        url: "/ogPort.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Usman Naveed — Software Developer",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Usman Naveed — Software Developer",
     description:
       "Software developer based Ontario. Check out my projects, resume, and hobbies.",
+    images: ["/ogPort.jpg"],
   },
   icons: {
     icon: "/icon.png",
   },
 };
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Usman Naveed",
+  url: "https://usmannaveed.ca",
+  jobTitle: "Software Developer",
+  image: "https://usmannaveed.ca/ogPort.jpg",
+  address: {
+    "@type": "PostalAddress",
+    addressRegion: "Ontario",
+    addressCountry: "CA",
+  },
+  sameAs: [
+    "https://github.com/Ushmayne",
+    "https://www.linkedin.com/in/usman-naveed-2b9baa191/",
+  ],
+};
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${oswald.variable} ${martel.variable} ${ibmPlexMono.variable} ${barlowSemiCondensed.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <Nav />
         <IdCard />
         <main className="p-4 md:p-6">{children}</main>
