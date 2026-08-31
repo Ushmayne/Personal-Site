@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: "Usman Naveed",
     images: [
       {
-        url: "/ogPort.jpg",
+        url: "/og-preview.png",
         width: 1200,
         height: 630,
         alt: "Usman Naveed — Software Developer",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     title: "Usman Naveed — Software Developer",
     description:
       "Software developer based Ontario. Check out my projects, resume, and hobbies.",
-    images: ["/ogPort.jpg"],
+    images: ["/og-preview.png"],
   },
   icons: {
     icon: "/icon.png",
@@ -76,7 +76,7 @@ const personJsonLd = {
   name: "Usman Naveed",
   url: "https://usmannaveed.ca",
   jobTitle: "Software Developer",
-  image: "https://usmannaveed.ca/ogPort.jpg",
+  image: "https://usmannaveed.ca/id.jpg",
   address: {
     "@type": "PostalAddress",
     addressRegion: "Ontario",

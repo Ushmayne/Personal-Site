@@ -597,7 +597,6 @@ button:focus-visible,
   .hamburger { display: flex; }
 
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .hero-right { order: -1; }
   .hero-title { max-width: none; }
 
   .about-grid { grid-template-columns: 1fr; }
