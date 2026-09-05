@@ -41,6 +41,15 @@ const projects: Project[] = [
     href: 'https://www.naveedlegalsuite.com/',
   },
   {
+    kind: 'CLIENT PROJECT',
+    title: "Rob's Power Washing",
+    desc: 'Marketing site for a Windsor-Essex pressure washing business: services, reviews, and a quote request built to convert.',
+    tags: ['Next.js', 'TypeScript', 'Tailwind'],
+    thumb: 'thumb-2',
+    image: '/robsPowerWashing.png',
+    href: 'https://robspowerwashing.vercel.app/',
+  },
+  {
     kind: 'PERSONAL PROJECT',
     title: 'CareLog',
     desc: 'Family care coordination app: Tracks medications, appointments, visit notes, and shared tasks in one hub.',
