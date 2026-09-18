@@ -50,6 +50,15 @@ const projects: Project[] = [
     href: 'https://robspowerwashing.vercel.app/',
   },
   {
+    kind: 'CLIENT DEMO',
+    title: 'Pearl & Leaf',
+    desc: 'Bubble tea shop site built as a live example for prospective clients: menu, location, and branding for a Windsor café.',
+    tags: ['Next.js', 'TypeScript', 'Tailwind'],
+    thumb: 'thumb-4',
+    image: '/pearlAndLeaf.png',
+    href: 'https://example-3-eight.vercel.app/',
+  },
+  {
     kind: 'PERSONAL PROJECT',
     title: 'CareLog',
     desc: 'Family care coordination app: Tracks medications, appointments, visit notes, and shared tasks in one hub.',
