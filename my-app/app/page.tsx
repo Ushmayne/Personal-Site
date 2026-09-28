@@ -311,7 +311,7 @@ export default function Home() {
             <div className="social-links mono">
               <a href="https://github.com/Ushmayne" target="_blank" rel="noopener noreferrer">GitHub</a>
               <a href="https://www.linkedin.com/in/usman-naveed-2b9baa191/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="https://www.instagram.com/u_naveed/" target="_blank" rel="noopener noreferrer">Instagram</a>
+              <a href="https://www.instagram.com/usman.webdeveloper/" target="_blank" rel="noopener noreferrer">Instagram</a>
             </div>
           </div>
         </section>
