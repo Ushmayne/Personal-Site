@@ -41,7 +41,7 @@ const projects: Project[] = [
     href: 'https://www.naveedlegalsuite.com/',
   },
   {
-    kind: 'CLIENT PROJECT',
+    kind: 'CLIENT DEMO',
     title: "Rob's Power Washing",
     desc: 'Marketing site for a Windsor-Essex pressure washing business: services, reviews, and a quote request built to convert.',
     tags: ['Next.js', 'TypeScript', 'Tailwind'],
@@ -57,6 +57,15 @@ const projects: Project[] = [
     thumb: 'thumb-4',
     image: '/pearlAndLeaf.png',
     href: 'https://example-3-eight.vercel.app/',
+  },
+  {
+    kind: 'CLIENT DEMO',
+    title: 'Dough & Drip',
+    desc: 'Stuffed cookie and coffee shop site built as a live example for prospective clients: tabbed menu, order-ahead form, and an animated cookie pull-apart.',
+    tags: ['React Router', 'TypeScript', 'Tailwind'],
+    thumb: 'thumb-3',
+    image: '/doughAndDrip.png',
+    href: 'https://github.com/Ushmayne/example-4',
   },
   {
     kind: 'PERSONAL PROJECT',
