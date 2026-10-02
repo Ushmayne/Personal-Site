@@ -65,7 +65,7 @@ const projects: Project[] = [
     tags: ['React Router', 'TypeScript', 'Tailwind'],
     thumb: 'thumb-3',
     image: '/doughAndDrip.png',
-    href: 'https://github.com/Ushmayne/example-4',
+    href: 'https://doughanddrip.vercel.app/',
   },
   {
     kind: 'PERSONAL PROJECT',
